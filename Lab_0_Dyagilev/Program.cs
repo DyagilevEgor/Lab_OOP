@@ -10,6 +10,23 @@ namespace Lab_0_Dyagilev
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Выберите фигуру для расчета площади:");
+            Console.WriteLine("1. Квадрат");
+            Console.WriteLine("2. Прямоугольник");
+
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    CalculateSquareArea();
+                    break;
+                case "2":
+                    CalculateRectangleArea();
+                    break;
+                default:
+                    Console.WriteLine("Некорректный выбор. Пожалуйста, выберите 1 или 2.");
+                    break;
+            }
         }
 
         static void CalculateSquareArea()
