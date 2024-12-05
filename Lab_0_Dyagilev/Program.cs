@@ -28,5 +28,24 @@ namespace Lab_0_Dyagilev
             }
             Console.ReadLine();
         }
+
+        static void CalculateRectangleArea()
+        {
+            Console.Write("Введите длину прямоугольника: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите ширину прямоугольника: ");
+            int b = Convert.ToInt32(Console.ReadLine());
+
+            if (a > 0 & b > 0)
+            {
+                double area = a * b;
+                Console.WriteLine($"Площадь прямоугольника: {area}");
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: одно из введенных значений недопустимо.");
+            }
+            Console.ReadLine();
+        }
     }
 }
