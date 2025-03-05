@@ -14,11 +14,11 @@ namespace Lb1
         /// <param name="args">Параметры</param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Press any button to start...");
+            Console.WriteLine("Press any button to start");
             Console.WriteLine();
             Console.ReadKey();
             Console.WriteLine("1. Two lists of persons are creating, " +
-                "each contains three persons...");
+                "each contains three persons");
             Console.WriteLine();
             Console.ReadKey();
 
@@ -42,16 +42,17 @@ namespace Lb1
             firstList.AddArrayOfPeople(firstArray);
             secondList.AddArrayOfPeople(secondArray);
 
-            Console.WriteLine("Two lists of persons have been sucсessfully created!");
+            Console.WriteLine("Two lists of persons have been" + 
+                "sucсessfully created!");
             Console.ReadKey();
 
             Console.WriteLine();
             Console.WriteLine("2. Displaying the contents of " +
-                "each list to the console...");
+                "each list to the console");
             ShowListOfPersons(firstList, secondList);
             Console.WriteLine();
 
-            Console.WriteLine("3. Adding a new person to the first list... ");
+            Console.WriteLine("3. Adding a new person to the first list ");
             firstList.AddPerson(new Person("Homer", "Simpson", 40, Gender.Male));
             ShowListOfPersons(firstList, secondList);
             Console.WriteLine();
