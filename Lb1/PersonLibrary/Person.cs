@@ -149,6 +149,7 @@ namespace PersonLibrary
                 m => m.Value.ToUpper());
         }
 
+        //TODO: encapsulation
         /// <summary>
         /// Проверка для ввода возраста
         /// </summary>
@@ -168,6 +169,7 @@ namespace PersonLibrary
             }
         }
 
+        //TODO: remove
         /// <summary>
         /// Проверка пола
         /// </summary>

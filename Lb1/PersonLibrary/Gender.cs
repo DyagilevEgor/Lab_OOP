@@ -1,5 +1,4 @@
-﻿
-namespace PersonLibrary
+﻿namespace PersonLibrary
 {
     /// <summary>
     /// Пол человека

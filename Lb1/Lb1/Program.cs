@@ -8,13 +8,15 @@ namespace Lb1
     /// </summary>
     internal class Program
     {
+        //TODO: RSDN
         /// <summary>
         /// Точка входа в программу
         /// </summary>
         /// <param name="args">Параметры</param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Press any button to start");
+            Console.WriteLine("Press any button to start");            
+            
             Console.WriteLine();
             Console.ReadKey();
             Console.WriteLine("Two lists of persons are creating, " +
@@ -116,6 +118,7 @@ namespace Lb1
                 secondList
             };
             Console.ReadKey();
+
             for (int i = 0; i < personLists.Length; i++)
             {
                 Console.WriteLine();
