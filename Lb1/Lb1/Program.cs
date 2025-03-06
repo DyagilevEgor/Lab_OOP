@@ -8,7 +8,6 @@ namespace Lb1
     /// </summary>
     internal class Program
     {
-        //TODO: RSDN +
         /// <summary>
         /// Точка входа в программу
         /// </summary>

@@ -164,7 +164,6 @@ namespace PersonLibrary
                 m => m.Value.ToUpper());
         }
 
-        //TODO: encapsulation +
         /// <summary>
         /// Проверка для ввода возраста
         /// </summary>
