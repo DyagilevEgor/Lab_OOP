@@ -44,7 +44,7 @@ namespace Lb1
                 {
                     Console.Write("Gender (1 - Male, 2 - Female): ");
                     int gender = Int32.Parse(Console.ReadLine());
-                    Person.CheckingGender(gender);
+                    CheckingGender(gender);
                     newPerson.Gender = (Gender)Enum.Parse(
                         typeof(Gender), Convert.ToString(gender));
                 }),
@@ -70,6 +70,25 @@ namespace Lb1
                 {
                     Console.WriteLine($"\n{e.Message}\n");
                 }
+            }
+        }
+
+        //TODO: remove +
+        /// <summary>
+        /// Проверка пола
+        /// </summary>
+        /// <param name="number">Цифра пола для проверки</param>
+        /// <returns>Корректная цифра для определения пола</returns>
+        public static int CheckingGender(int number)
+        {
+            if (number < 1 || number > 2)
+            {
+                throw new Exception("Please enter 1 or 2 " +
+                    $", where 1 - Male, 2 - Female!");
+            }
+            else
+            {
+                return number;
             }
         }
     }

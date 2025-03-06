@@ -58,6 +58,7 @@ namespace PersonLibrary
             {
                 CheckingNameAndSurname(value);
                 _surname = ConvertToRightRegister(value);
+                AreSameLaguage();
             }
         }
 
@@ -112,11 +113,25 @@ namespace PersonLibrary
         }
 
         /// <summary>
-        /// Проверка имени и фамилии
+        /// Проверка имя и фамилия на одном языке.
         /// </summary>
-        /// <param name="value">Имя или фамилия для проверки</param>
-        /// <returns>Корректная строка</returns>
-        public static string CheckingNameAndSurname(string value)
+        private void AreSameLaguage()
+        {
+            var regex = new Regex("^[A-Za-z\\-]+");
+
+            if ((regex.IsMatch(_name) ^ regex.IsMatch(_surname)))
+            {
+                throw new Exception(
+                    "Name and Surname are not in the same language! ");
+            }
+        }
+
+            /// <summary>
+            /// Проверка имени и фамилии
+            /// </summary>
+            /// <param name="value">Имя или фамилия для проверки</param>
+            /// <returns>Корректная строка</returns>
+            public static string CheckingNameAndSurname(string value)
         {
             if (value == string.Empty)
             {
@@ -149,13 +164,13 @@ namespace PersonLibrary
                 m => m.Value.ToUpper());
         }
 
-        //TODO: encapsulation
+        //TODO: encapsulation +
         /// <summary>
         /// Проверка для ввода возраста
         /// </summary>
         /// <param name="age">Возраст для проверки</param>
         /// <returns>Корректный возраст</returns>
-        public static int CheckingAge(int age)
+        private static int CheckingAge(int age)
         {
             if (age < 0 || age > AgeMax)
             {
@@ -168,26 +183,7 @@ namespace PersonLibrary
                 return age;
             }
         }
-
-        //TODO: remove
-        /// <summary>
-        /// Проверка пола
-        /// </summary>
-        /// <param name="number">Цифра пола для проверки</param>
-        /// <returns>Корректная цифра для определения пола</returns>
-        public static int CheckingGender(int number)
-        {
-            if (number < 1 || number > 2)
-            {
-                throw new Exception("Please enter 1 or 2 " +
-                    $", where 1 - Male, 2 - Female!");
-            }
-            else
-            {
-                return number;
-            }
-        }
-
+                
         /// <summary>
         /// Вывод информации о человеке
         /// </summary>

@@ -8,12 +8,12 @@ namespace Lb1
     /// </summary>
     internal class Program
     {
-        //TODO: RSDN
+        //TODO: RSDN +
         /// <summary>
         /// Точка входа в программу
         /// </summary>
         /// <param name="args">Параметры</param>
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
             Console.WriteLine("Press any button to start");            
             
