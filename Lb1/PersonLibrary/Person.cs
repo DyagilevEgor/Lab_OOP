@@ -169,7 +169,7 @@ namespace PersonLibrary
         }
 
         /// <summary>
-        /// Проверка для ввода пола
+        /// Проверка пола
         /// </summary>
         /// <param name="number">Цифра пола для проверки</param>
         /// <returns>Корректная цифра для определения пола</returns>
