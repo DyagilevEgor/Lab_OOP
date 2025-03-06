@@ -17,7 +17,7 @@ namespace Lb1
             Console.WriteLine("Press any button to start");
             Console.WriteLine();
             Console.ReadKey();
-            Console.WriteLine("1. Two lists of persons are creating, " +
+            Console.WriteLine("Two lists of persons are creating, " +
                 "each contains three persons");
             Console.WriteLine();
             Console.ReadKey();
@@ -47,12 +47,12 @@ namespace Lb1
             Console.ReadKey();
 
             Console.WriteLine();
-            Console.WriteLine("2. Displaying the contents of " +
+            Console.WriteLine("Displaying the contents of " +
                 "each list to the console");
             ShowListOfPersons(firstList, secondList);
             Console.WriteLine();
 
-            Console.WriteLine("3. Adding a new person to the first list ");
+            Console.WriteLine("Adding a new person to the first list ");
             firstList.AddPerson(new Person("Homer", "Simpson", 40, Gender.Male));
             ShowListOfPersons(firstList, secondList);
             Console.WriteLine();
@@ -61,8 +61,8 @@ namespace Lb1
             Console.ReadKey();
 
             Console.WriteLine();
-            Console.WriteLine("4. Copying the second person from the first" +
-                " list to the end of the second list... ");
+            Console.WriteLine("Copying the second person from the first" +
+                " list to the end of the second list");
             secondList.AddPerson(firstList.FindByIndex(1));
             ShowListOfPersons(firstList, secondList);
             Console.WriteLine();
@@ -70,7 +70,7 @@ namespace Lb1
             Console.WriteLine();
             Console.ReadKey();
 
-            Console.WriteLine("5. Removing the second person from the first list...");
+            Console.WriteLine("Removing the second person from the first list");
             firstList.RemovePersonByIndex(1);
             ShowListOfPersons(firstList, secondList);
             Console.WriteLine();
@@ -79,27 +79,27 @@ namespace Lb1
             Console.WriteLine();
             Console.ReadKey();
 
-            Console.WriteLine("6. Clearing the second list...");
+            Console.WriteLine("Clearing the second list");
             secondList.ClearList();
             ShowListOfPersons(firstList, secondList);
             Console.WriteLine("All persons have been successfully removed from the 2nd list!");
             Console.WriteLine();
             Console.ReadKey();
 
-            Console.WriteLine("7. Let's add a new person " +
-                "to the second list from keyboard...");
+            Console.WriteLine("Let's add a new person " +
+                "to the second list from keyboard");
             Console.WriteLine();
             secondList.AddPerson(AddConsolePerson.NewPerson());
             ShowListOfPersons(firstList, secondList);
             Console.WriteLine();
 
-            Console.WriteLine("8. Add a random person " +
-                "to the second list...");
+            Console.WriteLine("Add a random person " +
+                "to the second list");
             Person randPerson = RandomPerson.GetRandomPerson();
             secondList.AddPerson(randPerson);
             ShowListOfPersons(firstList, secondList);
             Console.WriteLine();
-            Console.WriteLine("Press any button to exit...");
+            Console.WriteLine("Press any button to exit");
             Console.ReadKey();
         }
 

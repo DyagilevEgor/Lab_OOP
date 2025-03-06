@@ -173,7 +173,7 @@ namespace PersonLibrary
         /// </summary>
         /// <param name="number">Цифра пола для проверки</param>
         /// <returns>Корректная цифра для определения пола</returns>
-        public static int CheckingSex(int number)
+        public static int CheckingGender(int number)
         {
             if (number < 1 || number > 2)
             {

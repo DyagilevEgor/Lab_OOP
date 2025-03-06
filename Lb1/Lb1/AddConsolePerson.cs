@@ -44,7 +44,7 @@ namespace Lb1
                 {
                     Console.Write("Gender (1 - Male, 2 - Female): ");
                     int gender = Int32.Parse(Console.ReadLine());
-                    Person.CheckingSex(gender);
+                    Person.CheckingGender(gender);
                     newPerson.Gender = (Gender)Enum.Parse(
                         typeof(Gender), Convert.ToString(gender));
                 }),
