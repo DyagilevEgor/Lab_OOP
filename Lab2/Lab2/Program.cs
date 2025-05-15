@@ -47,18 +47,18 @@ namespace Lab2
             Console.Write("The fourth person in the list is...\n ");
             switch (listOfPersons.FindByIndex(3))
             {
-                //TODO: RSDN +
+                //TODO: RSDN ++
                 case Adult adult:
-                    {
-                        Console.WriteLine(adult.GoToWork());
-                        break;
-                    }
+                {
+                    Console.WriteLine(adult.GoToWork());
+                    break;
+                }
 
                 case Child child:
-                    {
-                        Console.WriteLine(child.WatchCartoons());
-                        break;
-                    }
+                {
+                    Console.WriteLine(child.WatchCartoons());
+                    break;
+                }
             }
 
             Console.ReadKey();
