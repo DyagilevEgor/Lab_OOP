@@ -32,6 +32,7 @@ namespace PersonLibrary
                 if (!(value > MinAdultAge) && !(value <= MaxAdultAge))
                 {
                     throw new ArgumentOutOfRangeException(
+                        //TODO: RSDN
                         $"Sorry, the age must be between {MinAdultAge} and {MaxAdultAge} years.");
                 }
                 _age = value;
@@ -108,6 +109,7 @@ namespace PersonLibrary
             }
         }
 
+        //TODO: validation
         /// <summary>
         /// Информация о месте работы
         /// </summary>

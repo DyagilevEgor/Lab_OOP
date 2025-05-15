@@ -18,6 +18,7 @@ namespace PersonLibrary
         /// </summary>
         private static string[] _maleNames = new string[]
         {
+            //TODO: RSDN
                 "Walter", "Jesse", "Rick", "Mattew",
                 "Nicholas", "Jotaro", "Morty",
                 "Dio", "Clark", "Bruce", "Peter"
@@ -28,6 +29,7 @@ namespace PersonLibrary
         /// </summary>
         private static string[] _femaleNames = new string[]
         {
+            //TODO: RSDN
                 "Beth", "Summer", "Liza", "Kira",
                 "Trish", "Selina", "Diana",
                 "Kara", "Mary", "Violet", "Gwen"
@@ -38,6 +40,7 @@ namespace PersonLibrary
         /// </summary>
         private static string[] _allSurnames = new string[]
         {
+            //TODO: RSDN
                 "White", "Pinkman", "Sanchez", "McConaughey",
                 "Cage", "Kujo", "Smith",
                 "Joestar", "Kent", "Speedwagon", "Wayne"
@@ -67,6 +70,7 @@ namespace PersonLibrary
             var sex = _randNum.Next(0, 2);
             switch (sex)
             {
+                //TODO: RSDN
                 case 0:
                     {
                         person.Gender = Gender.Male;

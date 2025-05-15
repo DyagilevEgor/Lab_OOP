@@ -47,6 +47,7 @@ namespace Lab2
             Console.Write("The fourth person in the list is...\n ");
             switch (listOfPersons.FindByIndex(3))
             {
+                //TODO: RSDN
                 case Adult adult:
                     {
                         Console.WriteLine(adult.GoToWork());
@@ -65,7 +66,6 @@ namespace Lab2
             Console.Write("Press any key to exit...");
             Console.WriteLine();
             Console.ReadKey();
-
         }
     }
 }
