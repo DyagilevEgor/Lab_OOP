@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 
 namespace PersonLibrary
 {
-    //TODO: RSDN +
     /// <summary>
     /// Класс, представляющий человека (Person).
     /// Содержит информацию о имени, фамилии, возрасте и поле.
