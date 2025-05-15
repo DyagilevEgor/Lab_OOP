@@ -13,14 +13,14 @@ namespace PersonLibrary
         /// <summary>
         /// Приватное поле для хранения списка людей
         /// </summary>
-        private List<Person> _people;
+        private List<PersonBase> _people;
 
         /// <summary>
         /// Конструктор для инициализации нового списка людей.
         /// </summary>
         public PersonList()
         {
-            _people = new List<Person>();
+            _people = new List<PersonBase>();
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace PersonLibrary
         /// </summary>
         /// <param name="person">Объект типа Person, который нужно добавить
         /// в список.</param>
-        public void AddPerson(Person person)
+        public void AddPerson(PersonBase person)
         {
             _people.Add(person);
         }
@@ -37,9 +37,9 @@ namespace PersonLibrary
         /// Добавление нескольких людей
         /// </summary>
         /// <param name="persons">Массив людей</param>
-        public void AddArrayOfPeople(Person[] persons)
+        public void AddArrayOfPeople(PersonBase[] persons)
         {
-            foreach (Person person in persons)
+            foreach (PersonBase person in persons)
             {
                 AddPerson(person);
             }
@@ -51,7 +51,7 @@ namespace PersonLibrary
         /// </summary>
         /// <param name="person">Объект типа Person, который нужно удалить из
         /// списка.</param>
-        public void RemovePerson(Person person)
+        public void RemovePerson(PersonBase person)
         {
             _people.Remove(person);
         }
@@ -75,7 +75,7 @@ namespace PersonLibrary
         /// найти.</param>
         /// <returns>Индекс объекта в списке, если он найден; в противном
         /// случае — -1.</returns>
-        public int GetIndexOfPerson(Person person)
+        public int GetIndexOfPerson(PersonBase person)
         {
             return _people.IndexOf(person);
         }
@@ -85,7 +85,7 @@ namespace PersonLibrary
         /// </summary>
         /// <param name="index">Индекс человека</param>
         /// <returns>возвращает значение по указанному индексу</returns> 
-        public Person FindByIndex(int index)
+        public PersonBase FindByIndex(int index)
         {
             if (index >= 0 && index < _people.Count)
             {

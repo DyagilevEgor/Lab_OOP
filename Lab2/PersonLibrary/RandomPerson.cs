@@ -18,7 +18,6 @@ namespace PersonLibrary
         /// </summary>
         private static string[] _maleNames = new string[]
         {
-            //TODO: RSDN
                 "Walter", "Jesse", "Rick", "Mattew",
                 "Nicholas", "Jotaro", "Morty",
                 "Dio", "Clark", "Bruce", "Peter"
@@ -29,7 +28,6 @@ namespace PersonLibrary
         /// </summary>
         private static string[] _femaleNames = new string[]
         {
-            //TODO: RSDN
                 "Beth", "Summer", "Liza", "Kira",
                 "Trish", "Selina", "Diana",
                 "Kara", "Mary", "Violet", "Gwen"
@@ -40,7 +38,6 @@ namespace PersonLibrary
         /// </summary>
         private static string[] _allSurnames = new string[]
         {
-            //TODO: RSDN
                 "White", "Pinkman", "Sanchez", "McConaughey",
                 "Cage", "Kujo", "Smith",
                 "Joestar", "Kent", "Speedwagon", "Wayne"
@@ -49,7 +46,7 @@ namespace PersonLibrary
         /// <summary>
         /// Генерация случайного человека: взрослый или ребенок
         /// </summary>
-        public static Person CreateRandomPerson()
+        public static PersonBase CreateRandomPerson()
         {
             if (_randNum.Next(0, 2) != 0)
             {
@@ -65,12 +62,11 @@ namespace PersonLibrary
         /// Заполнение базовых полей человека
         /// </summary>
         /// <param name="person">человек</param>
-        public static void GetRandomPerson(Person person)
+        public static void GetRandomPerson(PersonBase person)
         {
             var sex = _randNum.Next(0, 2);
             switch (sex)
             {
-                //TODO: RSDN
                 case 0:
                     {
                         person.Gender = Gender.Male;

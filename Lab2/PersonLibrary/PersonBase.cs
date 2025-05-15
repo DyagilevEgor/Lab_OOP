@@ -8,7 +8,7 @@ namespace PersonLibrary
         /// Класс, представляющий человека (Person).
         /// Содержит информацию о имени, фамилии, возрасте и поле.
         /// </summary>
-        public abstract class Person
+        public abstract class PersonBase
         {
             /// <summary>
             /// Имя 
@@ -75,7 +75,7 @@ namespace PersonLibrary
             /// <param name="surname">Фамилия человека</param>
             /// <param name="age">Возраст человека</param>
             /// <param name="gender">Пол человека</param>
-            public Person(string name, string surname, int age, Gender gender)
+            public PersonBase(string name, string surname, int age, Gender gender)
             {
                 Name = name;
                 Surname = surname;
@@ -86,7 +86,7 @@ namespace PersonLibrary
             /// <summary>
             /// Конструктор по умолчанию
             /// </summary>
-            public Person() : this("John", "Doe", 99, Gender.Male) { }
+            public PersonBase() : this("John", "Doe", 99, Gender.Male) { }
 
             /// <summary>
             /// Проверка имени и фамилии на корректность ввода

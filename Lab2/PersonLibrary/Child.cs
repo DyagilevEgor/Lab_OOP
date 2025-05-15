@@ -5,7 +5,7 @@ namespace PersonLibrary
     /// <summary>
     /// Ребенок
     /// </summary>
-    public class Child : Person
+    public class Child : PersonBase
     {
         /// <summary>
         /// Наименьший возраст 
@@ -51,11 +51,11 @@ namespace PersonLibrary
         /// </summary>
         public Adult ParentTwo { get; set; }
 
-        //TODO: validation
         /// <summary>
         /// Название детского сада или школы
         /// </summary>
         public string School { get; set; }
+
 
         /// <summary>
         /// Информация о ребёнке
