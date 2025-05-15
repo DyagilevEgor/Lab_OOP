@@ -140,24 +140,6 @@ namespace PersonLibrary
             }
 
             /// <summary>
-            /// Проверка для ввода пола
-            /// </summary>
-            /// <param name="number">Цифра пола для проверки</param>
-            /// <returns>Корректная цифра для определения пола</returns>
-            public static int CheckingSex(int number)
-            {
-                if (number < 1 || number > 2)
-                {
-                    throw new Exception("Please enter 1 or 2 " +
-                        $", where 1 - Male, 2 - Female!");
-                }
-                else
-                {
-                    return number;
-                }
-            }
-
-            /// <summary>
             /// Вывод информации о человеке
             /// </summary>
             public virtual string Info => $"{Name} {Surname}, Age: {Age}, Gender: {Gender}";
