@@ -1,15 +1,75 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Model;
 
 namespace Lab3
 {
-    class Program
+    /// <summary>
+    /// Класс для тестирования библиотеки классов Model
+    /// </summary>
+    public class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Точка входа в программу
+        /// </summary>
+        /// <param name="args">Параметры</param>
+        public static void Main(string[] args)
         {
+            Console.WriteLine("Калькулятор" +
+                "площади фигур!\n" +
+                "Нажмите любую кнопку, чтобы начать...");
+            Console.ReadKey();
+
+            while (true)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Выберите действие:");
+                Console.WriteLine("1 - Вычисление площади круга");
+                Console.WriteLine("2 - Вычисление площади прямоугольника");
+                Console.WriteLine("3 - Вычисление площади треугольника");
+                Console.WriteLine("4 - Выход из программы");
+                var consoleKey = Console.ReadLine();
+                switch (consoleKey)
+                {
+                    case "1":
+                        {
+                            GetVolumeInfo(AddConsoleFigure.
+                                GetCircle());
+                            break;
+                        }
+                    case "2":
+                        {
+                            GetVolumeInfo(AddConsoleFigure.
+                                GetRectangle());
+                            break;
+                        }
+                    case "3":
+                        {
+                            GetVolumeInfo(AddConsoleFigure.
+                                GetTriangle());
+                            break;
+                        }
+                    case "4":
+                        {
+                            Environment.Exit(0);
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Попробуйте ещё раз.");
+                            break;
+                        }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Вывести информацию в консоль
+        /// </summary>
+        /// <param name="figure">Экземпляр класса Фигура</param>
+        public static void GetVolumeInfo(FigureBase figure)
+        {
+            Console.WriteLine($"Площадь фигуры равна " +
+                $"{figure.Area} см^2.");
         }
     }
 }
