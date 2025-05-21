@@ -1,7 +1,7 @@
 ﻿using System;
 using Model;
 
-namespace Lab3
+namespace ConsoleLoader
 {
     /// <summary>
     /// Класс для тестирования библиотеки классов Model

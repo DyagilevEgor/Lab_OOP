@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Lab3
+namespace ConsoleLoader
 {
     /// <summary>
     /// Добавление фигур с консоли
