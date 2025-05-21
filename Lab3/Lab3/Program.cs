@@ -15,7 +15,7 @@ namespace ConsoleLoader
         public static void Main(string[] args)
         {
             Console.WriteLine("Калькулятор" +
-                "площади фигур!\n" +
+                " площади фигур!\n" +
                 "Нажмите любую кнопку, чтобы начать...");
             Console.ReadKey();
 
