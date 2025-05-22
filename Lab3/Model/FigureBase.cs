@@ -13,7 +13,6 @@ namespace Model
         /// </summary>
         public abstract double Area { get; }
 
-        //TODO: rename +
         /// <summary>
         /// Проверка числа положительность
         /// </summary>

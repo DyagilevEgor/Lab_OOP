@@ -57,7 +57,6 @@ namespace Model
         {
             get
             {
-                //TODO: rewrite +
                 return Length * Width;
             }
         }
