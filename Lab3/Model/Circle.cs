@@ -23,7 +23,7 @@ namespace Model
             }
             set
             {
-                CheckingNumber(value);
+                CheckingForNegative(value);
                 _radius = value;
             }
         }
@@ -36,8 +36,8 @@ namespace Model
         {
             get
             {
-                //TODO: rewrite
-                return Math.Round(Math.PI * Math.Pow(Radius,2), 3);
+                //TODO: rewrite +
+                return Math.PI * Math.Pow(Radius,2);
             }
         }
     }

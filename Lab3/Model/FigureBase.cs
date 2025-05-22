@@ -13,13 +13,13 @@ namespace Model
         /// </summary>
         public abstract double Area { get; }
 
-        //TODO: rename
+        //TODO: rename +
         /// <summary>
-        /// Проверка числа
+        /// Проверка числа положительность
         /// </summary>
         /// <param name="number">Число для проверки</param>
         /// <returns>Корректное число</returns>
-        public static double CheckingNumber(double number)
+        public static double CheckingForNegative(double number)
         {
             if (number < 0)
             {

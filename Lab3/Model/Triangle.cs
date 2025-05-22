@@ -33,7 +33,7 @@ namespace Model
             }
             set
             {
-                CheckingNumber(value);
+                CheckingForNegative(value);
                 _firstSide = value;
             }
         }
@@ -49,7 +49,7 @@ namespace Model
             }
             set
             {
-                CheckingNumber(value);
+                CheckingForNegative(value);
                 _secondSide = value;
             }
         }
@@ -65,7 +65,7 @@ namespace Model
             }
             set
             {
-                CheckingNumber(value);
+                CheckingForNegative(value);
                 _thirdSide = value;
             }
         }
@@ -89,9 +89,9 @@ namespace Model
         {
             get
             {
-                //TODO: rewrite
-                return Math.Round(Math.Sqrt((HalfSum * (HalfSum - FirstSide)
-                    * (HalfSum - SecondSide) * (HalfSum - ThirdSide))), 3);
+                //TODO: rewrite +
+                return Math.Sqrt((HalfSum * (HalfSum - FirstSide)
+                    * (HalfSum - SecondSide) * (HalfSum - ThirdSide)));
             }
         }
     }

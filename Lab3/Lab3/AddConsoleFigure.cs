@@ -96,7 +96,7 @@ namespace ConsoleLoader
             return double.Parse(Console.ReadLine().Replace('.', ','));
         }
 
-        // <summary>
+        /// <summary>
         /// Получение пользовательского ввода
         /// и задание параметра
         /// </summary>

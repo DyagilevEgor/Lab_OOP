@@ -28,7 +28,7 @@ namespace Model
             }
             set
             {
-                CheckingNumber(value);
+                CheckingForNegative(value);
                 _length = value;
             }
         }
@@ -44,7 +44,7 @@ namespace Model
             }
             set
             {
-                CheckingNumber(value);
+                CheckingForNegative(value);
                 _width = value;
             }
         }
@@ -57,8 +57,8 @@ namespace Model
         {
             get
             {
-                //TODO: rewrite
-                return Math.Round(Length * Width, 3);
+                //TODO: rewrite +
+                return Length * Width;
             }
         }
     }

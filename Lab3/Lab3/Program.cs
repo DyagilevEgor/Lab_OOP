@@ -8,6 +8,8 @@ namespace ConsoleLoader
     /// </summary>
     public class Program
     {
+        private 
+        
         /// <summary>
         /// Точка входа в программу
         /// </summary>
@@ -31,36 +33,36 @@ namespace ConsoleLoader
                 switch (consoleKey)
                 {
 
-                    //TODO: RSDN
+                    //TODO: RSDN +
                     case "1":
-                        {
-                            GetVolumeInfo(AddConsoleFigure.
-                                GetCircle());
-                            break;
-                        }
+                    {
+                        GetVolumeInfo(AddConsoleFigure.
+                            GetCircle());
+                        break;
+                    }
                     case "2":
-                        {
-                            GetVolumeInfo(AddConsoleFigure.
-                                GetRectangle());
-                            break;
-                        }
+                    {
+                        GetVolumeInfo(AddConsoleFigure.
+                            GetRectangle());
+                        break;
+                    }
                     case "3":
-                        {
-                            //BUG
-                            GetVolumeInfo(AddConsoleFigure.
-                                GetTriangle());
-                            break;
-                        }
+                    {
+                        //BUG
+                        GetVolumeInfo(AddConsoleFigure.
+                            GetTriangle());
+                        break;
+                    }
                     case "4":
-                        {
-                            Environment.Exit(0);
-                            break;
-                        }
+                    {
+                        Environment.Exit(0);
+                        break;
+                    }
                     default:
-                        {
-                            Console.WriteLine("Попробуйте ещё раз.");
-                            break;
-                        }
+                    {
+                        Console.WriteLine("Попробуйте ещё раз.");
+                        break;
+                    }
                 }
             }
         }
@@ -72,7 +74,7 @@ namespace ConsoleLoader
         public static void GetVolumeInfo(FigureBase figure)
         {
             Console.WriteLine($"Площадь фигуры равна " +
-                $"{figure.Area} см^2.");
+                $"{Math.Round(figure.Area, 3)} см^2.");
         }
     }
 }
