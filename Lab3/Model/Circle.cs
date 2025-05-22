@@ -36,6 +36,7 @@ namespace Model
         {
             get
             {
+                //TODO: rewrite
                 return Math.Round(Math.PI * Math.Pow(Radius,2), 3);
             }
         }

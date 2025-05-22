@@ -57,6 +57,7 @@ namespace Model
         {
             get
             {
+                //TODO: rewrite
                 return Math.Round(Length * Width, 3);
             }
         }
