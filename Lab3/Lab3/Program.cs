@@ -8,7 +8,10 @@ namespace ConsoleLoader
     /// </summary>
     public class Program
     {
-        private 
+        /// <summary>
+        /// Точность вывода  значений
+        /// </summary>
+        private static int _accuracy = 3;
         
         /// <summary>
         /// Точка входа в программу
@@ -74,7 +77,7 @@ namespace ConsoleLoader
         public static void GetVolumeInfo(FigureBase figure)
         {
             Console.WriteLine($"Площадь фигуры равна " +
-                $"{Math.Round(figure.Area, 3)} см^2.");
+                $"{Math.Round(figure.Area, _accuracy)} м^2.");
         }
     }
 }

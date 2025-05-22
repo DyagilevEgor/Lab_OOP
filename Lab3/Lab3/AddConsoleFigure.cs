@@ -20,7 +20,7 @@ namespace ConsoleLoader
             {
                 new Action(() =>
                 {
-                    Console.WriteLine("Длина радиуса, см: ");
+                    Console.WriteLine("Длина радиуса, м: ");
                     circle.Radius =
                         ReadFromConsoleAndParse();
                 })
@@ -40,13 +40,13 @@ namespace ConsoleLoader
             {
                 new Action(() =>
                 {
-                    Console.WriteLine("Длина, см: ");
+                    Console.WriteLine("Длина, м: ");
                     rectangle.Length =
                         ReadFromConsoleAndParse();
                 }),
                 new Action(() =>
                 {
-                    Console.WriteLine("Ширина, см: ");
+                    Console.WriteLine("Ширина, м: ");
                     rectangle.Width =
                         ReadFromConsoleAndParse();
                 }),
@@ -66,20 +66,20 @@ namespace ConsoleLoader
             {
                 new Action(() =>
                 {
-                    Console.WriteLine("Длина первой стороны, см: ");
+                    Console.WriteLine("Длина первой стороны, м: ");
                     triangle.FirstSide =
                         ReadFromConsoleAndParse();
                 }),
                 new Action(() =>
                 {
-                    Console.WriteLine("Длина второй стороны, см: ");
+                    Console.WriteLine("Длина второй стороны, м: ");
                     triangle.SecondSide =
                         ReadFromConsoleAndParse();
                 }),
                 new Action(() =>
                 {
                     Console.WriteLine("Длина третьей " +
-                        "стороны, см: ");
+                        "стороны, м: ");
                     triangle.ThirdSide =
                         ReadFromConsoleAndParse();
                 }),
