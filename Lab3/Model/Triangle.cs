@@ -73,7 +73,7 @@ namespace Model
         /// <summary>
         /// Полупериметр
         /// </summary>
-        public double HalfSum
+        private double HalfSum
         {
             get
             {
