@@ -66,10 +66,29 @@ namespace Model
             set
             {
                 CheckingForNegative(value);
+                IsCorrectThirdSide(value);
                 _thirdSide = value;
             }
         }
 
+        /// <summary>
+        /// Проверка третьей стороны
+        /// </summary>
+        /// <param name="number">Число для проверки</param>
+        /// <returns>Корректная длина стороны</returns>
+        public double IsCorrectThirdSide(double number)
+        {
+            if (number >= FirstSide + SecondSide) 
+            {
+                throw new ArgumentException($"Длина стороны должна быть меньше " +
+                    $"{FirstSide + SecondSide}.");
+            }
+            else
+            {
+                return number;
+            }
+        }
+        
         /// <summary>
         /// Полупериметр
         /// </summary>
