@@ -74,6 +74,16 @@ namespace Model
         }
 
         /// <summary>
+        /// Конструктор с параметрами
+        /// </summary>
+        public Triangle(double first, double second, double third)
+        {
+            FirstSide = first;
+            SecondSide = second;
+            ThirdSide = third;
+        }
+
+        /// <summary>
         /// Проверка возможности существования треугольника
         /// </summary>
         private void ValidateTriangle()

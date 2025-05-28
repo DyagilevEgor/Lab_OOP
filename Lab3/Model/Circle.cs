@@ -29,6 +29,14 @@ namespace Model
         }
 
         /// <summary>
+        /// Конструктор с параметрами
+        /// </summary>
+        public Circle(double first)
+        {
+            Radius = first;
+        }
+
+        /// <summary>
         /// Вычисление площади круга
         /// </summary>
         /// <retutns>Площадь круга</retutns>

@@ -50,6 +50,15 @@ namespace Model
         }
 
         /// <summary>
+        /// Конструктор с параметрами
+        /// </summary>
+        public Rectangle(double first, double second)
+        {
+            Length = first;
+            Width = second;
+        }
+
+        /// <summary>
         /// Вычисление площади прямоугольника
         /// </summary>
         /// <retutns>Площадь прямоугольника</retutns>
