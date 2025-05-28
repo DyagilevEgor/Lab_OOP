@@ -35,6 +35,7 @@ namespace Model
             {
                 CheckingForNegative(value);
                 _firstSide = value;
+                ValidateTriangle();
             }
         }
 
@@ -51,6 +52,7 @@ namespace Model
             {
                 CheckingForNegative(value);
                 _secondSide = value;
+                ValidateTriangle();
             }
         }
 
@@ -66,39 +68,31 @@ namespace Model
             set
             {
                 CheckingForNegative(value);
-                IsCorrectThirdSide(value);
                 _thirdSide = value;
+                ValidateTriangle();
             }
         }
 
         /// <summary>
-        /// Проверка третьей стороны
+        /// Проверка возможности существования треугольника
         /// </summary>
-        /// <param name="number">Число для проверки</param>
-        /// <returns>Корректная длина стороны</returns>
-        public double IsCorrectThirdSide(double number)
+        private void ValidateTriangle()
         {
-            if (number >= FirstSide + SecondSide) 
+            if (FirstSide <= 0 || SecondSide <= 0 || ThirdSide <= 0)
+                return; // Одна из сторон еще не установлена
+
+            if ((FirstSide + SecondSide <= ThirdSide) ||
+                (FirstSide + ThirdSide <= SecondSide) ||
+                (SecondSide + ThirdSide <= FirstSide))
             {
-                throw new ArgumentException($"Длина стороны должна быть меньше " +
-                    $"{FirstSide + SecondSide}.");
-            }
-            else
-            {
-                return number;
+                throw new ArgumentException("Треугольник с заданными сторонами не может существовать.");
             }
         }
-        
+
         /// <summary>
         /// Полупериметр
         /// </summary>
-        private double HalfSum
-        {
-            get
-            {
-                return (FirstSide + SecondSide + ThirdSide) / 2;
-            }
-        }
+        private double HalfSum => (FirstSide + SecondSide + ThirdSide) / 2;
 
         /// <summary>
         /// Вычисление площади треугольника
@@ -108,8 +102,8 @@ namespace Model
         {
             get
             {
-                return Math.Sqrt((HalfSum * (HalfSum - FirstSide)
-                    * (HalfSum - SecondSide) * (HalfSum - ThirdSide)));
+                return Math.Sqrt(HalfSum * (HalfSum - FirstSide)
+                    * (HalfSum - SecondSide) * (HalfSum - ThirdSide));
             }
         }
     }
