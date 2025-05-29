@@ -88,8 +88,8 @@ namespace Model
         /// </summary>
         private void ValidateTriangle()
         {
-            if (FirstSide <= 0 || SecondSide <= 0 || ThirdSide <= 0)
-                return; // Одна из сторон еще не установлена
+            // Одна из сторон еще не установлена
+            if (FirstSide <= 0 || SecondSide <= 0 || ThirdSide <= 0) return; 
 
             if ((FirstSide + SecondSide <= ThirdSide) ||
                 (FirstSide + ThirdSide <= SecondSide) ||
