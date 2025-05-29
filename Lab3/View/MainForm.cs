@@ -27,6 +27,7 @@ namespace View
         /// </summary>
         private void ComboBoxFigure_SelectedIndexChanged(object sender, EventArgs e)
         {
+            flowLayoutPanelInputs.Visible = false;
             flowLayoutPanelInputs.Controls.Clear();
 
             int count = 0;
@@ -43,11 +44,11 @@ namespace View
             {
                 var label = new Label { Text = (count == 1) ? "Радиус:" : $"Сторона {i + 1}:", AutoSize = true };
                 var textBox = new TextBox { Width = 100 };
-                flowLayoutPanelInputs.Controls.Add(label);
-                flowLayoutPanelInputs.Controls.Add(textBox);
+                flowLayoutPanelInputs.Controls.AddRange(new Control[] {label, textBox});
             }
 
             labelResult.Text = string.Empty;
+            flowLayoutPanelInputs.Visible = true;
         }
 
         /// <summary>
