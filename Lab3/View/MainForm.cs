@@ -44,11 +44,37 @@ namespace View
             {
                 var label = new Label { Text = (count == 1) ? "Радиус:" : $"Сторона {i + 1}:", AutoSize = true };
                 var textBox = new TextBox { Width = 100 };
-                flowLayoutPanelInputs.Controls.AddRange(new Control[] {label, textBox});
+                textBox.TextChanged += TextBox_TextChanged; // подписка на событие
+                flowLayoutPanelInputs.Controls.AddRange(new Control[] { label, textBox });
             }
 
             labelResult.Text = string.Empty;
             flowLayoutPanelInputs.Visible = true;
+        }
+
+        // <summary>
+        /// Проверка значения при изменении текста в поле ввода
+        /// </summary>
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                if (!double.TryParse(textBox.Text.Replace('.', ','), out double value))
+                {
+                    textBox.BackColor = System.Drawing.Color.MistyRose;
+                    errorProvider.SetError(textBox, "Введите числовое значение.");
+                }
+                else if (value <= 0)
+                {
+                    textBox.BackColor = System.Drawing.Color.MistyRose;
+                    errorProvider.SetError(textBox, "Значение должно быть положительным.");
+                }
+                else
+                {
+                    textBox.BackColor = System.Drawing.SystemColors.Window;
+                    errorProvider.SetError(textBox, ""); // Удалить ошибку
+                }
+            }
         }
 
         /// <summary>
@@ -63,30 +89,42 @@ namespace View
                     throw new InvalidOperationException("Выберите фигуру.");
 
                 List<double> values = new List<double>();
+                bool hasInvalid = false;
+
                 foreach (Control control in flowLayoutPanelInputs.Controls)
                 {
                     if (control is TextBox textBox)
                     {
-                        if (string.IsNullOrWhiteSpace(textBox.Text))
-                            throw new ArgumentException("Пожалуйста, заполните все поля.");
-                        values.Add(double.Parse(textBox.Text.Replace('.', ',')));
+                        // Попытка преобразования значения
+                        if (string.IsNullOrWhiteSpace(textBox.Text) ||
+                            !double.TryParse(textBox.Text.Replace('.', ','), out double value) ||
+                            value <= 0)
+                        {
+                            textBox.BackColor = System.Drawing.Color.MistyRose;
+                            hasInvalid = true;
+                        }
+                        else
+                        {
+                            textBox.BackColor = System.Drawing.SystemColors.Window; // Восстановление цвета
+                            values.Add(value);
+                        }
                     }
                 }
+
+                if (hasInvalid)
+                    throw new ArgumentException("Пожалуйста, введите положительные числа во все поля.");
 
                 FigureBase shape = null;
                 switch (figure)
                 {
                     case "Треугольник":
-                        var triangle = new Triangle(values[0], values[1], values[2]);
-                        shape = triangle;
+                        shape = new Triangle(values[0], values[1], values[2]);
                         break;
                     case "Прямоугольник":
-                        var rectangle = new Model.Rectangle(values[0], values[1]);
-                        shape = rectangle;
+                        shape = new Model.Rectangle(values[0], values[1]);
                         break;
                     case "Круг":
-                        var circle = new Circle(values[0]);
-                        shape = circle;
+                        shape = new Circle(values[0]);
                         break;
                 }
 
