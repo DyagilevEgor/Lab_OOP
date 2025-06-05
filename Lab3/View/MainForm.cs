@@ -17,8 +17,10 @@ namespace View
         {
             InitializeComponent();
 
-            comboBoxFigure.Items.AddRange(new[] { "Треугольник", "Прямоугольник", "Круг" });
-            comboBoxFigure.SelectedIndexChanged += ComboBoxFigure_SelectedIndexChanged;
+            comboBoxFigure.Items.AddRange(new[] { "Треугольник", 
+                "Прямоугольник", "Круг" });
+            comboBoxFigure.SelectedIndexChanged += 
+                ComboBoxFigure_SelectedIndexChanged;
             buttonCalculate.Click += ButtonCalculate_Click;
         }
 
@@ -42,10 +44,12 @@ namespace View
 
             for (int i = 0; i < count; i++)
             {
-                var label = new Label { Text = (count == 1) ? "Радиус:" : $"Сторона {i + 1}:", AutoSize = true };
+                var label = new Label { Text = (count == 1) ? "Радиус:"
+                    : $"Сторона {i + 1}:", AutoSize = true };
                 var textBox = new TextBox { Width = 100 };
-                textBox.TextChanged += TextBox_TextChanged; // подписка на событие
-                flowLayoutPanelInputs.Controls.AddRange(new Control[] { label, textBox });
+                textBox.TextChanged += TextBox_TextChanged; 
+                flowLayoutPanelInputs.Controls.AddRange(new Control[]
+                { label, textBox });
             }
 
             labelResult.Text = string.Empty;
@@ -59,20 +63,23 @@ namespace View
         {
             if (sender is TextBox textBox)
             {
-                if (!double.TryParse(textBox.Text.Replace('.', ','), out double value))
+                if (!double.TryParse(textBox.Text.Replace('.', ','),
+                    out double value))
                 {
                     textBox.BackColor = System.Drawing.Color.MistyRose;
-                    errorProvider.SetError(textBox, "Введите числовое значение.");
+                    errorProvider.SetError(textBox, "Введите числовое" +
+                        " значение.");
                 }
                 else if (value <= 0)
                 {
                     textBox.BackColor = System.Drawing.Color.MistyRose;
-                    errorProvider.SetError(textBox, "Значение должно быть положительным.");
+                    errorProvider.SetError(textBox, "Значение должно" +
+                        " быть положительным.");
                 }
                 else
                 {
                     textBox.BackColor = System.Drawing.SystemColors.Window;
-                    errorProvider.SetError(textBox, ""); // Удалить ошибку
+                    errorProvider.SetError(textBox, "");
                 }
             }
         }
@@ -95,24 +102,27 @@ namespace View
                 {
                     if (control is TextBox textBox)
                     {
-                        // Попытка преобразования значения
                         if (string.IsNullOrWhiteSpace(textBox.Text) ||
-                            !double.TryParse(textBox.Text.Replace('.', ','), out double value) ||
+                            !double.TryParse(textBox.Text.Replace('.',
+                            ','), out double value) ||
                             value <= 0)
                         {
-                            textBox.BackColor = System.Drawing.Color.MistyRose;
+                            textBox.BackColor = 
+                                System.Drawing.Color.MistyRose;
                             hasInvalid = true;
                         }
                         else
                         {
-                            textBox.BackColor = System.Drawing.SystemColors.Window; // Восстановление цвета
+                            textBox.BackColor = 
+                                System.Drawing.SystemColors.Window; 
                             values.Add(value);
                         }
                     }
                 }
 
                 if (hasInvalid)
-                    throw new ArgumentException("Пожалуйста, введите положительные числа во все поля.");
+                    throw new ArgumentException("Пожалуйста, введите" +
+                        " положительные числа во все поля.");
 
                 FigureBase shape = null;
                 switch (figure)
