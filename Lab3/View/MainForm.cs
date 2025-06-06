@@ -17,6 +17,7 @@ namespace View
         {
             InitializeComponent();
 
+            //TODO: duplication
             comboBoxFigure.Items.AddRange(new[] { "Треугольник", 
                 "Прямоугольник", "Круг" });
             comboBoxFigure.SelectedIndexChanged += 
@@ -35,6 +36,9 @@ namespace View
             int count = 0;
             string figure = comboBoxFigure.SelectedItem.ToString();
 
+            //TODO: RSDN
+            //TODO: duplication
+            //TODO: rewrite
             switch (figure)
             {
                 case "Треугольник": count = 3; break;
@@ -43,8 +47,9 @@ namespace View
             }
 
             for (int i = 0; i < count; i++)
-            {
-                var label = new Label { Text = (count == 1) ? "Радиус:"
+            {//TODO: RSDN
+                var label = new Label 
+                { Text = (count == 1) ? "Радиус:"
                     : $"Сторона {i + 1}:", AutoSize = true };
                 var textBox = new TextBox { Width = 100 };
                 textBox.TextChanged += TextBox_TextChanged; 
@@ -127,6 +132,7 @@ namespace View
                 FigureBase shape = null;
                 switch (figure)
                 {
+                    //TODO: duplication
                     case "Треугольник":
                         shape = new Triangle(values[0], values[1], values[2]);
                         break;
