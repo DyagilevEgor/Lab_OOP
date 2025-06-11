@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -81,6 +82,16 @@ namespace Model
             FirstSide = first;
             SecondSide = second;
             ThirdSide = third;
+        }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Triangle()
+        {
+            FirstSide = 3;
+            SecondSide = 4;
+            ThirdSide = 6;
         }
 
         /// <summary>

@@ -37,6 +37,14 @@ namespace Model
         }
 
         /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Circle()
+        {
+            Radius = 2;
+        }
+
+        /// <summary>
         /// Вычисление площади круга
         /// </summary>
         /// <retutns>Площадь круга</retutns>
