@@ -29,99 +29,164 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.buttonCalculate = new System.Windows.Forms.Button();
-            this.comboBoxFigure = new System.Windows.Forms.ComboBox();
-            this.labelResult = new System.Windows.Forms.Label();
-            this.flowLayoutPanelInputs = new System.Windows.Forms.FlowLayoutPanel();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ToolStripDropDownButtonFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.DataFigureView = new System.Windows.Forms.DataGridView();
+            this.AddFigureButton = new System.Windows.Forms.Button();
+            this.DeleteFugureButton = new System.Windows.Forms.Button();
+            this.RandomFigureButton = new System.Windows.Forms.Button();
+            this.SearchFigureButton = new System.Windows.Forms.Button();
+            this.DropFilterButton = new System.Windows.Forms.Button();
+            this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataFigureView)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonCalculate
+            // contextMenuStrip1
             // 
-            this.buttonCalculate.Location = new System.Drawing.Point(17, 130);
-            this.buttonCalculate.Name = "buttonCalculate";
-            this.buttonCalculate.Size = new System.Drawing.Size(75, 23);
-            this.buttonCalculate.TabIndex = 3;
-            this.buttonCalculate.Text = "Рассчитать";
-            this.buttonCalculate.UseVisualStyleBackColor = true;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // comboBoxFigure
+            // menuStrip1
             // 
-            this.comboBoxFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFigure.FormattingEnabled = true;
-            this.comboBoxFigure.Location = new System.Drawing.Point(21, 29);
-            this.comboBoxFigure.Name = "comboBoxFigure";
-            this.comboBoxFigure.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxFigure.TabIndex = 0;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripDropDownButtonFile});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(396, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // labelResult
+            // ToolStripDropDownButtonFile
             // 
-            this.labelResult.AutoSize = true;
-            this.labelResult.Location = new System.Drawing.Point(98, 135);
-            this.labelResult.Name = "labelResult";
-            this.labelResult.Size = new System.Drawing.Size(57, 13);
-            this.labelResult.TabIndex = 5;
-            this.labelResult.Text = "Площадь:";
+            this.ToolStripDropDownButtonFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.открытьToolStripMenuItem,
+            this.сохранитьToolStripMenuItem});
+            this.ToolStripDropDownButtonFile.Name = "ToolStripDropDownButtonFile";
+            this.ToolStripDropDownButtonFile.Size = new System.Drawing.Size(48, 20);
+            this.ToolStripDropDownButtonFile.Text = "Файл";
             // 
-            // flowLayoutPanelInputs
+            // открытьToolStripMenuItem
             // 
-            this.flowLayoutPanelInputs.Location = new System.Drawing.Point(166, 27);
-            this.flowLayoutPanelInputs.Name = "flowLayoutPanelInputs";
-            this.flowLayoutPanelInputs.Size = new System.Drawing.Size(196, 84);
-            this.flowLayoutPanelInputs.TabIndex = 6;
+            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.открытьToolStripMenuItem.Text = "Открыть";
             // 
-            // errorProvider
+            // сохранитьToolStripMenuItem
             // 
-            this.errorProvider.ContainerControl = this;
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(12, 6);
+            this.groupBox1.Controls.Add(this.DataFigureView);
+            this.groupBox1.Location = new System.Drawing.Point(12, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(143, 113);
-            this.groupBox1.TabIndex = 7;
+            this.groupBox1.Size = new System.Drawing.Size(372, 189);
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Выберите фигуру";
+            this.groupBox1.Text = "Список фигур";
             // 
-            // groupBox2
+            // DataFigureView
             // 
-            this.groupBox2.Location = new System.Drawing.Point(161, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(226, 113);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Введите параметры фигуры";
+            this.DataFigureView.AllowUserToAddRows = false;
+            this.DataFigureView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataFigureView.Location = new System.Drawing.Point(6, 21);
+            this.DataFigureView.Name = "DataFigureView";
+            this.DataFigureView.RowHeadersVisible = false;
+            this.DataFigureView.Size = new System.Drawing.Size(360, 150);
+            this.DataFigureView.TabIndex = 0;
+            // 
+            // AddFigureButton
+            // 
+            this.AddFigureButton.Location = new System.Drawing.Point(18, 224);
+            this.AddFigureButton.Name = "AddFigureButton";
+            this.AddFigureButton.Size = new System.Drawing.Size(117, 23);
+            this.AddFigureButton.TabIndex = 3;
+            this.AddFigureButton.Text = "Добавить";
+            this.AddFigureButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteFugureButton
+            // 
+            this.DeleteFugureButton.Location = new System.Drawing.Point(141, 224);
+            this.DeleteFugureButton.Name = "DeleteFugureButton";
+            this.DeleteFugureButton.Size = new System.Drawing.Size(117, 23);
+            this.DeleteFugureButton.TabIndex = 3;
+            this.DeleteFugureButton.Text = "Удалить";
+            this.DeleteFugureButton.UseVisualStyleBackColor = true;
+            // 
+            // RandomFigureButton
+            // 
+            this.RandomFigureButton.Location = new System.Drawing.Point(264, 224);
+            this.RandomFigureButton.Name = "RandomFigureButton";
+            this.RandomFigureButton.Size = new System.Drawing.Size(117, 23);
+            this.RandomFigureButton.TabIndex = 3;
+            this.RandomFigureButton.Text = "Случайная фигура";
+            this.RandomFigureButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchFigureButton
+            // 
+            this.SearchFigureButton.Location = new System.Drawing.Point(18, 253);
+            this.SearchFigureButton.Name = "SearchFigureButton";
+            this.SearchFigureButton.Size = new System.Drawing.Size(117, 23);
+            this.SearchFigureButton.TabIndex = 3;
+            this.SearchFigureButton.Text = "Найти";
+            this.SearchFigureButton.UseVisualStyleBackColor = true;
+            // 
+            // DropFilterButton
+            // 
+            this.DropFilterButton.Enabled = false;
+            this.DropFilterButton.Location = new System.Drawing.Point(141, 253);
+            this.DropFilterButton.Name = "DropFilterButton";
+            this.DropFilterButton.Size = new System.Drawing.Size(117, 23);
+            this.DropFilterButton.TabIndex = 3;
+            this.DropFilterButton.Text = "Сбросить фильтр";
+            this.DropFilterButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 159);
-            this.Controls.Add(this.flowLayoutPanelInputs);
-            this.Controls.Add(this.labelResult);
-            this.Controls.Add(this.comboBoxFigure);
-            this.Controls.Add(this.buttonCalculate);
+            this.ClientSize = new System.Drawing.Size(396, 285);
+            this.Controls.Add(this.DropFilterButton);
+            this.Controls.Add(this.SearchFigureButton);
+            this.Controls.Add(this.RandomFigureButton);
+            this.Controls.Add(this.DeleteFugureButton);
+            this.Controls.Add(this.AddFigureButton);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Расчет площади фигур";
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Калькулятор плащади фигур";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DataFigureView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonCalculate;
-        private System.Windows.Forms.ComboBox comboBoxFigure;
-        private System.Windows.Forms.Label labelResult;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelInputs;
-        private System.Windows.Forms.ErrorProvider errorProvider;
+
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripDropDownButtonFile;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView DataFigureView;
+        private System.Windows.Forms.Button AddFigureButton;
+        private System.Windows.Forms.Button DeleteFugureButton;
+        private System.Windows.Forms.Button RandomFigureButton;
+        private System.Windows.Forms.Button SearchFigureButton;
+        private System.Windows.Forms.Button DropFilterButton;
     }
 }
