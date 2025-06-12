@@ -13,7 +13,7 @@ namespace View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddFigureForm());
+            Application.Run(new MainForm());
         }
     }
 }

@@ -73,14 +73,16 @@
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItemClick);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
             // 
             // groupBox1
             // 
@@ -110,6 +112,7 @@
             this.AddFigureButton.TabIndex = 3;
             this.AddFigureButton.Text = "Добавить";
             this.AddFigureButton.UseVisualStyleBackColor = true;
+            this.AddFigureButton.Click += new System.EventHandler(this.AddFigureButton_Click);
             // 
             // DeleteFugureButton
             // 
@@ -119,6 +122,7 @@
             this.DeleteFugureButton.TabIndex = 3;
             this.DeleteFugureButton.Text = "Удалить";
             this.DeleteFugureButton.UseVisualStyleBackColor = true;
+            this.DeleteFugureButton.Click += new System.EventHandler(this.DeleteFugureButton_Click);
             // 
             // RandomFigureButton
             // 
@@ -128,6 +132,7 @@
             this.RandomFigureButton.TabIndex = 3;
             this.RandomFigureButton.Text = "Случайная фигура";
             this.RandomFigureButton.UseVisualStyleBackColor = true;
+            this.RandomFigureButton.Click += new System.EventHandler(this.RandomFigureButton_Click);
             // 
             // SearchFigureButton
             // 
@@ -137,6 +142,7 @@
             this.SearchFigureButton.TabIndex = 3;
             this.SearchFigureButton.Text = "Найти";
             this.SearchFigureButton.UseVisualStyleBackColor = true;
+            this.SearchFigureButton.Click += new System.EventHandler(this.SearchFigureButton_Click);
             // 
             // DropFilterButton
             // 
@@ -147,6 +153,7 @@
             this.DropFilterButton.TabIndex = 3;
             this.DropFilterButton.Text = "Сбросить фильтр";
             this.DropFilterButton.UseVisualStyleBackColor = true;
+            this.DropFilterButton.Click += new System.EventHandler(this.DropFilterButton_Click);
             // 
             // MainForm
             // 
@@ -160,7 +167,9 @@
             this.Controls.Add(this.AddFigureButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
