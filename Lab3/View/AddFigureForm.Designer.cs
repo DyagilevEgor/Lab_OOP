@@ -104,6 +104,7 @@
             this.buttonAdd.TabIndex = 9;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // AddFigureForm
             // 
