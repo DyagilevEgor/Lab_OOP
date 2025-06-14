@@ -59,17 +59,20 @@ namespace View
         }
 
         /// <summary>
-        /// Удалить выбранные фигуры
+        /// Удалить выбранные фигуры из текущего источника данных
         /// </summary>
         private void DeleteFugureButton_Click(object sender, EventArgs e)
         {
+            var source = DataFigureView.DataSource as BindingList<FigureBase>;
+            if (source == null) return;
+
             int count = DataFigureView.SelectedRows.Count;
             for (int i = 0; i < count; i++)
             {
                 int index = DataFigureView.SelectedRows[0].Index;
-                if (index >= 0 && index < _figureList.Count)
+                if (index >= 0 && index < source.Count)
                 {
-                    _figureList.RemoveAt(index);
+                    source.RemoveAt(index);
                 }
             }
         }
@@ -86,34 +89,31 @@ namespace View
 
             if (openFileDialog.ShowDialog() != DialogResult.OK) return;
 
-            FileStream stream = null;
             try
             {
-                stream = new FileStream(openFileDialog.FileName, FileMode.Open);
-                var loadedList = (BindingList<FigureBase>)_serializer.Deserialize(stream);
-
-                _figureList.Clear();
-                foreach (var figure in loadedList)
+                using (var stream = new FileStream(openFileDialog.FileName, FileMode.Open))
                 {
-                    _figureList.Add(figure);
-                }
+                    var loadedList = (BindingList<FigureBase>)_serializer.Deserialize(stream);
 
-                MessageBox.Show("Файл успешно загружен.", "Загрузка завершена",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _figureList.Clear();
+                    foreach (var figure in loadedList)
+                    {
+                        _figureList.Add(figure);
+                    }
+
+                    SetupDataGridColumns();
+
+                    MessageBox.Show("Файл успешно загружен.", "Загрузка завершена",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка при загрузке файла. Возможно, файл поврежден.",
+                MessageBox.Show("Ошибка при загрузке файла:\n" + ex.Message,
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                if (stream != null)
-                {
-                    stream.Dispose();
-                }
-            }
         }
+
 
         /// <summary>
         /// Сохранение списка фигур в файл
@@ -201,7 +201,6 @@ namespace View
             DataFigureView.AutoGenerateColumns = false;
             DataFigureView.Columns.Clear();
 
-            // Колонка: Тип фигуры
             var typeColumn = new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "TypeName",
@@ -210,7 +209,6 @@ namespace View
             };
             DataFigureView.Columns.Add(typeColumn);
 
-            // Колонка: Площадь
             var areaColumn = new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "Area",

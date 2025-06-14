@@ -57,7 +57,7 @@
             this.ToolStripDropDownButtonFile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(396, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(274, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,14 +73,14 @@
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItemClick);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
             // 
@@ -97,11 +97,15 @@
             // DataFigureView
             // 
             this.DataFigureView.AllowUserToAddRows = false;
+            this.DataFigureView.AllowUserToResizeColumns = false;
+            this.DataFigureView.AllowUserToResizeRows = false;
+            this.DataFigureView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataFigureView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataFigureView.Location = new System.Drawing.Point(6, 21);
             this.DataFigureView.Name = "DataFigureView";
             this.DataFigureView.RowHeadersVisible = false;
-            this.DataFigureView.Size = new System.Drawing.Size(360, 150);
+            this.DataFigureView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataFigureView.Size = new System.Drawing.Size(240, 150);
             this.DataFigureView.TabIndex = 0;
             // 
             // AddFigureButton
@@ -126,7 +130,7 @@
             // 
             // RandomFigureButton
             // 
-            this.RandomFigureButton.Location = new System.Drawing.Point(264, 224);
+            this.RandomFigureButton.Location = new System.Drawing.Point(141, 12);
             this.RandomFigureButton.Name = "RandomFigureButton";
             this.RandomFigureButton.Size = new System.Drawing.Size(117, 23);
             this.RandomFigureButton.TabIndex = 3;
@@ -159,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 285);
+            this.ClientSize = new System.Drawing.Size(274, 283);
             this.Controls.Add(this.DropFilterButton);
             this.Controls.Add(this.SearchFigureButton);
             this.Controls.Add(this.RandomFigureButton);

@@ -19,7 +19,7 @@ namespace Model
         /// <summary>
         /// Максимальное значение параметра
         /// </summary>
-        private const int _maxValue = 100;
+        private const int _maxValue = 10;
 
         /// <summary>
         /// Минимальное значение параметра

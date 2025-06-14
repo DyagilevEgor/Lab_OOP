@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace Model
-{
+{   
+    [XmlInclude(typeof(Triangle))]
+    [XmlInclude(typeof(Circle))]
+    [XmlInclude(typeof(Rectangle))]
+
     /// <summary>
     /// Базовый класс 
     /// для всех фигур
