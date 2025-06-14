@@ -13,34 +13,27 @@ namespace View
     /// </summary>
     public partial class MainForm : Form
     {
-        /// <summary>
-        /// Список всех фигур
-        /// </summary>
         private BindingList<FigureBase> _figureList = new BindingList<FigureBase>();
-
-        /// <summary>
-        /// Список отфильтрованных фигур (поиск)
-        /// </summary>
         private readonly BindingList<FigureBase> _listForSearch = new BindingList<FigureBase>();
-
-        /// <summary>
-        /// Сериализатор для сохранения/загрузки
-        /// </summary>
         private readonly XmlSerializer _serializer = new XmlSerializer(typeof(BindingList<FigureBase>));
 
-        /// <summary>
-        /// Конструктор формы
-        /// </summary>
         public MainForm()
         {
             InitializeComponent();
+
+            DataFigureView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DataFigureView.MultiSelect = true;
             DataFigureView.DataSource = _figureList;
+#if !DEBUG
+            RandomFigureButton.Visible = false;
+#endif
             SetupDataGridColumns();
+
+#if !DEBUG
+            RandomFigureButton.Visible = false;
+#endif
         }
 
-        /// <summary>
-        /// Добавить фигуру вручную
-        /// </summary>
         private void AddFigureButton_Click(object sender, EventArgs e)
         {
             var addForm = new AddFigureForm();
@@ -55,16 +48,23 @@ namespace View
         /// </summary>
         private void RandomFigureButton_Click(object sender, EventArgs e)
         {
-            _figureList.Add(RandomFigure.GetRandomFigure());
+#if DEBUG
+    _figureList.Add(RandomFigure.GetRandomFigure());
+#endif
         }
 
         /// <summary>
-        /// Удалить выбранные фигуры из текущего источника данных
+        /// Удалить выбранные фигуры
         /// </summary>
         private void DeleteFugureButton_Click(object sender, EventArgs e)
         {
             var source = DataFigureView.DataSource as BindingList<FigureBase>;
-            if (source == null) return;
+            if (source == null || DataFigureView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите строку для удаления.", "Удаление",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             int count = DataFigureView.SelectedRows.Count;
             for (int i = 0; i < count; i++)
@@ -77,9 +77,6 @@ namespace View
             }
         }
 
-        /// <summary>
-        /// Загрузка списка фигур из файла
-        /// </summary>
         private void LoadToolStripMenuItemClick(object sender, EventArgs e)
         {
             var openFileDialog = new OpenFileDialog
@@ -114,10 +111,6 @@ namespace View
             }
         }
 
-
-        /// <summary>
-        /// Сохранение списка фигур в файл
-        /// </summary>
         private void SaveToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (_figureList.Count == 0)
@@ -126,7 +119,6 @@ namespace View
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             var saveFileDialog = new SaveFileDialog
             {
                 Filter = "Файлы (*.di)|*.di|Все файлы (*.*)|*.*",
@@ -136,27 +128,23 @@ namespace View
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
 
-            FileStream stream = null;
             try
             {
-                stream = new FileStream(saveFileDialog.FileName, FileMode.Create);
-                _serializer.Serialize(stream, _figureList);
-
-                MessageBox.Show("Файл успешно сохранён.", "Сохранение завершено",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            finally
-            {
-                if (stream != null)
+                using (var stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
                 {
-                    stream.Dispose();
+                    _serializer.Serialize(stream, _figureList);
+
+                    MessageBox.Show("Файл успешно сохранён.", "Сохранение завершено",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при сохранении файла:\n" + ex.Message,
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        /// <summary>
-        /// Открытие формы поиска фигур
-        /// </summary>
         private void SearchFigureButton_Click(object sender, EventArgs e)
         {
             var searchForm = new SearchFigureForm(_figureList);
@@ -164,9 +152,6 @@ namespace View
             searchForm.Show();
         }
 
-        /// <summary>
-        /// Обработка получения результатов из формы поиска
-        /// </summary>
         public void AddSearchFigureEvent(object sender, FigureEventArgs e)
         {
             _listForSearch.Add(e.SendingFigure);
@@ -176,12 +161,11 @@ namespace View
             DropFilterButton.Enabled = true;
             SearchFigureButton.Enabled = false;
             AddFigureButton.Enabled = false;
+#if DEBUG
             RandomFigureButton.Enabled = false;
+#endif
         }
 
-        /// <summary>
-        /// Сброс фильтрации после поиска
-        /// </summary>
         private void DropFilterButton_Click(object sender, EventArgs e)
         {
             _listForSearch.Clear();
@@ -190,11 +174,13 @@ namespace View
             DeleteFugureButton.Enabled = true;
             SearchFigureButton.Enabled = true;
             AddFigureButton.Enabled = true;
+#if DEBUG
             RandomFigureButton.Enabled = true;
+#endif
         }
 
         /// <summary>
-        /// Обновляет отображение таблицы фигур
+        /// Настраивает отображение колонок таблицы
         /// </summary>
         private void SetupDataGridColumns()
         {
