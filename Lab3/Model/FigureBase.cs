@@ -14,6 +14,11 @@ namespace Model
         public abstract double Area { get; }
 
         /// <summary>
+        /// Название типа фигуры
+        /// </summary>
+        public virtual string TypeName => "Фигура";
+
+        /// <summary>
         /// Проверка числа положительность
         /// </summary>
         /// <param name="number">Число для проверки</param>

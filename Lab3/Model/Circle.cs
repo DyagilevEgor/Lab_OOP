@@ -29,6 +29,11 @@ namespace Model
         }
 
         /// <summary>
+        /// Название типа фигуры
+        /// </summary>
+        public override string TypeName => "Круг";
+
+        /// <summary>
         /// Конструктор с параметрами
         /// </summary>
         public Circle(double first)

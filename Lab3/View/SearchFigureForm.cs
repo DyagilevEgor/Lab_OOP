@@ -35,6 +35,7 @@ namespace View
             _listFigureSearch = figures;
             MaximizeBox = false;
             TextBoxVolume.Enabled = false;
+            CheckBoxVolume.CheckedChanged += CheckBoxVolumeCheckedChanged;
         }
 
         /// <summary>

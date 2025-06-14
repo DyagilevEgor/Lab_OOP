@@ -73,6 +73,10 @@ namespace Model
                 ValidateTriangle();
             }
         }
+        /// <summary>
+        /// Название типа фигуры
+        /// </summary>
+        public override string TypeName => "Треугольник";
 
         /// <summary>
         /// Конструктор с параметрами

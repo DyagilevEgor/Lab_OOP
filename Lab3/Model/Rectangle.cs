@@ -50,6 +50,11 @@ namespace Model
         }
 
         /// <summary>
+        /// Название типа фигуры
+        /// </summary>
+        public override string TypeName => "Прямоугольник";
+
+        /// <summary>
         /// Конструктор с параметрами
         /// </summary>
         public Rectangle(double first, double second)
