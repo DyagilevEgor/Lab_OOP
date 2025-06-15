@@ -7,7 +7,7 @@ using Model;
 namespace View
 {
     /// <summary>
-    /// Форма добавления фигуры
+    /// Форма добавления фигуры.
     /// </summary>
     public partial class AddFigureForm : Form
     {
@@ -24,10 +24,11 @@ namespace View
         /// <summary>
         /// Словарь с параметрами и фабрикой создания фигуры
         /// </summary>
-        private readonly Dictionary<string, (int paramCount, Func<List<double>, FigureBase> create)> _figureMap;
+        private readonly Dictionary<string,
+            (int paramCount, Func<List<double>, FigureBase> create)> _figureMap;
 
         /// <summary>
-        /// Инициализирует новый экземпляр формы
+        /// Конструктор формы
         /// </summary>
         public AddFigureForm()
         {
@@ -111,9 +112,14 @@ namespace View
             {
                 string figureName = comboBoxFigure.SelectedItem?.ToString();
                 if (string.IsNullOrEmpty(figureName))
+                {
                     throw new InvalidOperationException("Выберите фигуру.");
+                }
+
                 if (!_figureMap.TryGetValue(figureName, out var config))
+                {
                     throw new InvalidOperationException("Неизвестная фигура.");
+                }
 
                 var values = new List<double>();
                 bool hasInvalid = false;
@@ -137,7 +143,9 @@ namespace View
                 }
 
                 if (hasInvalid)
+                {
                     throw new ArgumentException("Введите корректные положительные числа.");
+                }
 
                 _figure = config.create(values);
                 labelResult.Text = $"Площадь: {_figure.Area:F2}";

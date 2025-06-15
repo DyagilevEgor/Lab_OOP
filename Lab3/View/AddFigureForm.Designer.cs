@@ -119,6 +119,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddFigureForm";
             this.Text = "Расчет площади фигур";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

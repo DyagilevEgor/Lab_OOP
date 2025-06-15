@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataGridFigureTools.cs" />
     <Compile Include="FigureEventArgs.cs" />
     <Compile Include="SearchFigureForm.cs">
       <SubType>Form</SubType>

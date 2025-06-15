@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CheckBoxRectangle = new System.Windows.Forms.CheckBox();
-            this.CheckBoxTriangle = new System.Windows.Forms.CheckBox();
-            this.CheckBoxCircle = new System.Windows.Forms.CheckBox();
-            this.CheckBoxVolume = new System.Windows.Forms.CheckBox();
             this.TextBoxVolume = new System.Windows.Forms.TextBox();
+            this.CheckBoxVolume = new System.Windows.Forms.CheckBox();
+            this.CheckBoxCircle = new System.Windows.Forms.CheckBox();
+            this.CheckBoxTriangle = new System.Windows.Forms.CheckBox();
+            this.CheckBoxRectangle = new System.Windows.Forms.CheckBox();
             this.ButtonShowFigure = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -52,35 +52,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Найти фигуру";
             // 
-            // CheckBoxRectangle
+            // TextBoxVolume
             // 
-            this.CheckBoxRectangle.AutoSize = true;
-            this.CheckBoxRectangle.Location = new System.Drawing.Point(7, 20);
-            this.CheckBoxRectangle.Name = "CheckBoxRectangle";
-            this.CheckBoxRectangle.Size = new System.Drawing.Size(106, 17);
-            this.CheckBoxRectangle.TabIndex = 0;
-            this.CheckBoxRectangle.Text = "Прямоугольник";
-            this.CheckBoxRectangle.UseVisualStyleBackColor = true;
-            // 
-            // CheckBoxTriangle
-            // 
-            this.CheckBoxTriangle.AutoSize = true;
-            this.CheckBoxTriangle.Location = new System.Drawing.Point(6, 43);
-            this.CheckBoxTriangle.Name = "CheckBoxTriangle";
-            this.CheckBoxTriangle.Size = new System.Drawing.Size(91, 17);
-            this.CheckBoxTriangle.TabIndex = 0;
-            this.CheckBoxTriangle.Text = "Треугольник";
-            this.CheckBoxTriangle.UseVisualStyleBackColor = true;
-            // 
-            // CheckBoxCircle
-            // 
-            this.CheckBoxCircle.AutoSize = true;
-            this.CheckBoxCircle.Location = new System.Drawing.Point(6, 66);
-            this.CheckBoxCircle.Name = "CheckBoxCircle";
-            this.CheckBoxCircle.Size = new System.Drawing.Size(49, 17);
-            this.CheckBoxCircle.TabIndex = 0;
-            this.CheckBoxCircle.Text = "Круг";
-            this.CheckBoxCircle.UseVisualStyleBackColor = true;
+            this.TextBoxVolume.Location = new System.Drawing.Point(92, 88);
+            this.TextBoxVolume.Name = "TextBoxVolume";
+            this.TextBoxVolume.Size = new System.Drawing.Size(66, 20);
+            this.TextBoxVolume.TabIndex = 1;
             // 
             // CheckBoxVolume
             // 
@@ -92,12 +69,35 @@
             this.CheckBoxVolume.Text = "С площадью";
             this.CheckBoxVolume.UseVisualStyleBackColor = true;
             // 
-            // TextBoxVolume
+            // CheckBoxCircle
             // 
-            this.TextBoxVolume.Location = new System.Drawing.Point(102, 89);
-            this.TextBoxVolume.Name = "TextBoxVolume";
-            this.TextBoxVolume.Size = new System.Drawing.Size(56, 20);
-            this.TextBoxVolume.TabIndex = 1;
+            this.CheckBoxCircle.AutoSize = true;
+            this.CheckBoxCircle.Location = new System.Drawing.Point(6, 66);
+            this.CheckBoxCircle.Name = "CheckBoxCircle";
+            this.CheckBoxCircle.Size = new System.Drawing.Size(49, 17);
+            this.CheckBoxCircle.TabIndex = 0;
+            this.CheckBoxCircle.Text = "Круг";
+            this.CheckBoxCircle.UseVisualStyleBackColor = true;
+            // 
+            // CheckBoxTriangle
+            // 
+            this.CheckBoxTriangle.AutoSize = true;
+            this.CheckBoxTriangle.Location = new System.Drawing.Point(6, 43);
+            this.CheckBoxTriangle.Name = "CheckBoxTriangle";
+            this.CheckBoxTriangle.Size = new System.Drawing.Size(91, 17);
+            this.CheckBoxTriangle.TabIndex = 0;
+            this.CheckBoxTriangle.Text = "Треугольник";
+            this.CheckBoxTriangle.UseVisualStyleBackColor = true;
+            // 
+            // CheckBoxRectangle
+            // 
+            this.CheckBoxRectangle.AutoSize = true;
+            this.CheckBoxRectangle.Location = new System.Drawing.Point(7, 20);
+            this.CheckBoxRectangle.Name = "CheckBoxRectangle";
+            this.CheckBoxRectangle.Size = new System.Drawing.Size(106, 17);
+            this.CheckBoxRectangle.TabIndex = 0;
+            this.CheckBoxRectangle.Text = "Прямоугольник";
+            this.CheckBoxRectangle.UseVisualStyleBackColor = true;
             // 
             // ButtonShowFigure
             // 
@@ -116,6 +116,9 @@
             this.ClientSize = new System.Drawing.Size(188, 173);
             this.Controls.Add(this.ButtonShowFigure);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SearchFigureForm";
             this.Text = "Поиск";
             this.groupBox1.ResumeLayout(false);

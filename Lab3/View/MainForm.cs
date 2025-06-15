@@ -1,6 +1,5 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
@@ -9,14 +8,31 @@ using System.Xml.Serialization;
 namespace View
 {
     /// <summary>
-    /// Главная форма приложения
+    /// Главная форма приложения для работы с геометрическими фигурами
     /// </summary>
     public partial class MainForm : Form
     {
-        private BindingList<FigureBase> _figureList = new BindingList<FigureBase>();
-        private readonly BindingList<FigureBase> _listForSearch = new BindingList<FigureBase>();
-        private readonly XmlSerializer _serializer = new XmlSerializer(typeof(BindingList<FigureBase>));
+        /// <summary>
+        /// Основной список всех фигур
+        /// </summary>
+        private BindingList<FigureBase> _figureList =
+            new BindingList<FigureBase>();
 
+        /// <summary>
+        /// Список фигур, отфильтрованных в процессе поиска
+        /// </summary>
+        private readonly BindingList<FigureBase> _listForSearch = 
+            new BindingList<FigureBase>();
+
+        /// <summary>
+        /// XML-сериализатор для сохранения и загрузки списка фигур
+        /// </summary>
+        private readonly XmlSerializer _serializer = 
+            new XmlSerializer(typeof(BindingList<FigureBase>));
+
+        /// <summary>
+        /// Конструктор главной формы
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -24,6 +40,7 @@ namespace View
             DataFigureView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DataFigureView.MultiSelect = true;
             DataFigureView.DataSource = _figureList;
+
 #if !DEBUG
             RandomFigureButton.Visible = false;
 #endif
@@ -34,6 +51,9 @@ namespace View
 #endif
         }
 
+        /// <summary>
+        /// Обработчик кнопки добавления новой фигуры
+        /// </summary>
         private void AddFigureButton_Click(object sender, EventArgs e)
         {
             var addForm = new AddFigureForm();
@@ -44,17 +64,17 @@ namespace View
         }
 
         /// <summary>
-        /// Добавить случайную фигуру
+        /// Добавление случайной фигуры
         /// </summary>
         private void RandomFigureButton_Click(object sender, EventArgs e)
         {
 #if DEBUG
-    _figureList.Add(RandomFigure.GetRandomFigure());
+            _figureList.Add(RandomFigure.GetRandomFigure());
 #endif
         }
 
         /// <summary>
-        /// Удалить выбранные фигуры
+        /// Удаление выбранных фигур из списка
         /// </summary>
         private void DeleteFugureButton_Click(object sender, EventArgs e)
         {
@@ -77,6 +97,9 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Загрузка списка фигур из файла
+        /// </summary>
         private void LoadToolStripMenuItemClick(object sender, EventArgs e)
         {
             var openFileDialog = new OpenFileDialog
@@ -84,7 +107,10 @@ namespace View
                 Filter = "Файлы (*.di)|*.di|Все файлы (*.*)|*.*"
             };
 
-            if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
 
             try
             {
@@ -99,7 +125,6 @@ namespace View
                     }
 
                     SetupDataGridColumns();
-
                     MessageBox.Show("Файл успешно загружен.", "Загрузка завершена",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -111,6 +136,9 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Сохранение списка фигур в файл
+        /// </summary>
         private void SaveToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (_figureList.Count == 0)
@@ -119,6 +147,7 @@ namespace View
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             var saveFileDialog = new SaveFileDialog
             {
                 Filter = "Файлы (*.di)|*.di|Все файлы (*.*)|*.*",
@@ -126,7 +155,10 @@ namespace View
                 DefaultExt = ".di"
             };
 
-            if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
 
             try
             {
@@ -145,6 +177,9 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Открытие формы поиска фигур
+        /// </summary>
         private void SearchFigureButton_Click(object sender, EventArgs e)
         {
             var searchForm = new SearchFigureForm(_figureList);
@@ -152,6 +187,9 @@ namespace View
             searchForm.Show();
         }
 
+        /// <summary>
+        /// Добавление найденной фигуры из формы поиска
+        /// </summary>
         public void AddSearchFigureEvent(object sender, FigureEventArgs e)
         {
             _listForSearch.Add(e.SendingFigure);
@@ -166,6 +204,9 @@ namespace View
 #endif
         }
 
+        /// <summary>
+        /// Сброс фильтра и возврат ко всему списку фигур
+        /// </summary>
         private void DropFilterButton_Click(object sender, EventArgs e)
         {
             _listForSearch.Clear();
@@ -180,7 +221,7 @@ namespace View
         }
 
         /// <summary>
-        /// Настраивает отображение колонок таблицы
+        /// Настройка отображения колонок таблицы
         /// </summary>
         private void SetupDataGridColumns()
         {

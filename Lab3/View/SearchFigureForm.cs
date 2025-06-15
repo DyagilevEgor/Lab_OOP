@@ -1,12 +1,6 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace View
@@ -68,46 +62,70 @@ namespace View
         private void ButtonShowFigure_Click(object sender, EventArgs e)
         {
             int count = 0;
-            if (CheckBoxRectangle.Checked == false &&
-                CheckBoxTriangle.Checked == false &&
-                CheckBoxCircle.Checked == false &&
-                CheckBoxVolume.Checked == false)
+
+            if (!CheckBoxRectangle.Checked && !CheckBoxTriangle.Checked &&
+                !CheckBoxCircle.Checked && !CheckBoxVolume.Checked)
             {
-                MessageBox.Show("Вы не ввели критерии для поиска!");
+                MessageBox.Show("Вы не ввели критерии для поиска");
                 return;
             }
 
-            foreach (FigureBase figures in _listFigureSearch)
+            double searchedArea = 0;
+            bool areaFilterEnabled = CheckBoxVolume.Checked;
+
+            if (areaFilterEnabled)
             {
-                switch (figures)
+                if (!double.TryParse(TextBoxVolume.Text.Replace('.', ','), out searchedArea))
                 {
-                    case Model.Rectangle _ when CheckBoxRectangle.Checked:
-                    case Triangle _ when CheckBoxTriangle.Checked:
-                    case Circle _ when CheckBoxCircle.Checked:
-                        {
-                            count++;
-                            SendDataFromFormEvent?.Invoke(this,
-                                new FigureEventArgs(figures));
-                            break;
-                        }
+                    MessageBox.Show("Введите корректное числовое значение площади.");
+                    return;
+                }
+            }
+
+            foreach (FigureBase figure in _listFigureSearch)
+            {
+                bool typeMatch = true;
+
+                if (CheckBoxRectangle.Checked || CheckBoxTriangle.Checked || CheckBoxCircle.Checked)
+                {
+                    typeMatch = false;
+
+                    if (figure is Model.Rectangle && CheckBoxRectangle.Checked)
+                    {
+                        typeMatch = true;
+                    }
+                    else if (figure is Triangle && CheckBoxTriangle.Checked)
+                    {
+                        typeMatch = true;
+                    }
+                    else if (figure is Circle && CheckBoxCircle.Checked)
+                    {
+                        typeMatch = true;
+                    }
                 }
 
-                if (CheckBoxVolume.Checked && figures.Area.ToString().
-                    StartsWith(TextBoxVolume.Text))
+                bool areaMatch = true;
+
+                if (areaFilterEnabled)
+                {
+                    areaMatch = Math.Abs(Math.Round(figure.Area, 2) - Math.Round(searchedArea, 2)) < 0.001;
+                }
+
+                if (typeMatch && areaMatch)
                 {
                     count++;
-                    SendDataFromFormEvent?.Invoke(this,
-                        new FigureEventArgs(figures));
+                    SendDataFromFormEvent?.Invoke(this, new FigureEventArgs(figure));
                 }
             }
+
             if (count == 0)
             {
-                MessageBox.Show("Таких фигур нет или вы ввели нечисловое значение.\n" +
-                    "Будьте внимательны!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
+                MessageBox.Show("Таких фигур нет или вы ввели некорректное значение.\nБудьте внимательны",
+                                "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             Close();
+
             CheckBoxRectangle.Checked = false;
             CheckBoxTriangle.Checked = false;
             CheckBoxCircle.Checked = false;
