@@ -11,82 +11,22 @@ namespace Model
         /// <summary>
         /// Длина первой стороны треугольника
         /// </summary>
-        private double _firstSide;
+        public double FirstSide { get; set; }
 
         /// <summary>
         /// Длина второй стороны треугольника
         /// </summary>
-        private double _secondSide;
+        public double SecondSide { get; set; }
 
         /// <summary>
         /// Длина третьей стороны треугольника
         /// </summary>
-        private double _thirdSide;
+        public double ThirdSide { get; set; }
 
-        /// <summary>
-        /// Длина первой стороны треугольника
-        /// </summary>
-        public double FirstSide
-        {
-            get
-            {
-                return _firstSide;
-            }
-            set
-            {
-                CheckingForNegative(value);
-                _firstSide = value;
-                ValidateTriangle();
-            }
-        }
-
-        /// <summary>
-        /// Длина второй стороны треугольника
-        /// </summary>
-        public double SecondSide
-        {
-            get
-            {
-                return _secondSide;
-            }
-            set
-            {
-                CheckingForNegative(value);
-                _secondSide = value;
-                ValidateTriangle();
-            }
-        }
-
-        /// <summary>
-        /// Длина третьей стороны треугольника
-        /// </summary>
-        public double ThirdSide
-        {
-            get
-            {
-                return _thirdSide;
-            }
-            set
-            {
-                CheckingForNegative(value);
-                _thirdSide = value;
-                ValidateTriangle();
-            }
-        }
         /// <summary>
         /// Название типа фигуры
         /// </summary>
         public override string TypeName => "Треугольник";
-
-        /// <summary>
-        /// Конструктор с параметрами
-        /// </summary>
-        public Triangle(double first, double second, double third)
-        {
-            FirstSide = first;
-            SecondSide = second;
-            ThirdSide = third;
-        }
 
         /// <summary>
         /// Конструктор без параметров
@@ -95,17 +35,33 @@ namespace Model
         {
             FirstSide = 3;
             SecondSide = 4;
-            ThirdSide = 6;
+            ThirdSide = 5;
+        }
+
+        /// <summary>
+        /// Конструктор с параметрами
+        /// </summary>
+        /// <param name="first">Первая сторона.</param>
+        /// <param name="second">Вторая сторона.</param>
+        /// <param name="third">Третья сторона.</param>
+        public Triangle(double first, double second, double third)
+        {
+            CheckingForNegative(first);
+            CheckingForNegative(second);
+            CheckingForNegative(third);
+
+            FirstSide = first;
+            SecondSide = second;
+            ThirdSide = third;
+
+            Validate();
         }
 
         /// <summary>
         /// Проверка возможности существования треугольника
         /// </summary>
-        private void ValidateTriangle()
+        public void Validate()
         {
-            // Одна из сторон еще не установлена
-            if (FirstSide <= 0 || SecondSide <= 0 || ThirdSide <= 0) return; 
-
             if ((FirstSide + SecondSide <= ThirdSide) ||
                 (FirstSide + ThirdSide <= SecondSide) ||
                 (SecondSide + ThirdSide <= FirstSide))
@@ -115,21 +71,16 @@ namespace Model
         }
 
         /// <summary>
-        /// Полупериметр
-        /// </summary>
-        private double HalfSum => (FirstSide + SecondSide + ThirdSide) / 2;
-
-        /// <summary>
         /// Вычисление площади треугольника
         /// </summary>
-        /// <retutns>Площадь треугольника</retutns>
         public override double Area
         {
             get
             {
-                return Math.Sqrt(HalfSum * (HalfSum - FirstSide)
-                    * (HalfSum - SecondSide) * (HalfSum - ThirdSide));
+                double s = (FirstSide + SecondSide + ThirdSide) / 2;
+                return Math.Sqrt(s * (s - FirstSide) * (s - SecondSide) * (s - ThirdSide));
             }
         }
     }
 }
+
