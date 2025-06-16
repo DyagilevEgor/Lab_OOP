@@ -10,6 +10,7 @@ namespace View
     /// </summary>
     public partial class SearchFigureForm : Form
     {
+        //TODO: optimize
         /// <summary>
         /// Ивент для передачи данных 
         /// </summary>
@@ -63,8 +64,10 @@ namespace View
         {
             int count = 0;
 
-            if (!CheckBoxRectangle.Checked && !CheckBoxTriangle.Checked &&
-                !CheckBoxCircle.Checked && !CheckBoxVolume.Checked)
+            if (!CheckBoxRectangle.Checked 
+                && !CheckBoxTriangle.Checked 
+                && !CheckBoxCircle.Checked 
+                && !CheckBoxVolume.Checked)
             {
                 MessageBox.Show("Вы не ввели критерии для поиска");
                 return;

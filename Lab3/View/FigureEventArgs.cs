@@ -23,6 +23,7 @@ namespace View
         /// <param name="sendingFigure">Транспорт</param>
         public FigureEventArgs(FigureBase sendingFigure)
         {
+            //TODO: null?
             SendingFigure = sendingFigure;
         }
     }
