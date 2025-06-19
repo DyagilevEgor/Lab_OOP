@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Model;
+using System.Drawing;
 
 namespace View
 {
@@ -71,14 +72,17 @@ namespace View
             {
                 foreach (var paramName in config.paramNames)
                 {
+                    var textBox = new TextBox { Width = 100 };
+                    textBox.TextChanged += TextBox_TextChanged;
+
                     var label = new Label
                     {
                         Text = paramName + ":",
-                        AutoSize = true
+                        Width = 80,
+                        Height = textBox.Height,
+                        TextAlign = ContentAlignment.MiddleRight,
+                        AutoSize = false
                     };
-
-                    var textBox = new TextBox { Width = 100 };
-                    textBox.TextChanged += TextBox_TextChanged;
 
                     flowLayoutPanelInputs.Controls.Add(label);
                     flowLayoutPanelInputs.Controls.Add(textBox);
