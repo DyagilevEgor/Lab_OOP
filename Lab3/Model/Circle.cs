@@ -57,7 +57,9 @@ namespace Model
         {
             get
             {
-                return Math.PI * Math.Pow(Radius,2);
+                double area = Math.PI * Math.Pow(Radius,2);
+                CheckingForNegative(area);
+                return area;
             }
         }
     }

@@ -80,7 +80,9 @@ namespace Model
         {
             get
             {
-                return Length * Width;
+                double area = Length * Width;
+                CheckingForNegative(area);
+                return area;
             }
         }
     }

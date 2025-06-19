@@ -24,7 +24,11 @@ namespace View
         public FigureEventArgs(FigureBase sendingFigure)
         {
             //TODO: null?
+            if (sendingFigure == null)
+                throw new ArgumentNullException(nameof(sendingFigure), "Фигура не может быть null.");
+
             SendingFigure = sendingFigure;
         }
+
     }
 }

@@ -78,7 +78,9 @@ namespace Model
             get
             {
                 double s = (FirstSide + SecondSide + ThirdSide) / 2;
-                return Math.Sqrt(s * (s - FirstSide) * (s - SecondSide) * (s - ThirdSide));
+                double area = Math.Sqrt(s * (s - FirstSide) * (s - SecondSide) * (s - ThirdSide));
+                CheckingForNegative(area);
+                return area;
             }
         }
     }

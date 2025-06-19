@@ -24,20 +24,20 @@ namespace Model
         public virtual string TypeName => "Фигура";
 
         /// <summary>
-        /// Проверка числа положительность
+        /// Проверка числа положительность и конечность
         /// </summary>
         /// <param name="number">Число для проверки</param>
         /// <returns>Корректное число</returns>
-        public static double CheckingForNegative(double number)
+        protected void CheckingForNegative(double value)
         {
-            if (number <= 0)
+            if (double.IsNaN(value) || double.IsInfinity(value))
             {
-                throw new ArgumentOutOfRangeException("Величина должна " +
-                    "быть положительным числом");
+                throw new ArgumentException("Значение должно быть конечным числом, не NaN и не Infinity.");
             }
-            else
+
+            if (value <= 0)
             {
-                return number;
+                throw new ArgumentException("Значение должно быть положительным числом.");
             }
         }
     }
