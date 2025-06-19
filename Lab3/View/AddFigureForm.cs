@@ -25,7 +25,7 @@ namespace View
         /// Словарь с параметрами и фабрикой создания фигуры
         /// </summary>
         private readonly Dictionary<string,
-            (int paramCount, Func<List<double>, FigureBase> create)> _figureMap;
+            (string[] paramNames, Func<List<double>, FigureBase> create)> _figureMap;
 
         /// <summary>
         /// Конструктор формы
@@ -40,11 +40,17 @@ namespace View
 
             buttonAdd.Enabled = false;
 
-            _figureMap = new Dictionary<string, (int, Func<List<double>, FigureBase>)>
+            _figureMap = new Dictionary<string, (string[], Func<List<double>, FigureBase>)>
             {
-                ["Треугольник"] = (3, values => new Triangle(values[0], values[1], values[2])),
-                ["Прямоугольник"] = (2, values => new Model.Rectangle(values[0], values[1])),
-                ["Круг"] = (1, values => new Circle(values[0]))
+                ["Треугольник"] = (new[] { "Сторона A", "Сторона B", "Сторона C" },
+                values => new Triangle(values[0], values[1], values[2])
+    ),
+                ["Прямоугольник"] = (new[] { "Ширина", "Высота" },
+                values => new Model.Rectangle(values[0], values[1])
+    ),
+                ["Круг"] = (new[] { "Радиус" },
+                values => new Circle(values[0])
+    )
             };
 
             comboBoxFigure.Items.AddRange(_figureMap.Keys.ToArray());
@@ -59,20 +65,21 @@ namespace View
             flowLayoutPanelInputs.Controls.Clear();
             buttonAdd.Enabled = false;
             labelResult.Text = string.Empty;
-
+            //TODO:+
             if (comboBoxFigure.SelectedItem is string figureName &&
                 _figureMap.TryGetValue(figureName, out var config))
             {
-                for (int i = 0; i < config.paramCount; i++)
+                foreach (var paramName in config.paramNames)
                 {
                     var label = new Label
                     {
-                        //TODO:
-                        Text = config.paramCount == 1 ? "Радиус:" : $"Сторона {i + 1}:",
+                        Text = paramName + ":",
                         AutoSize = true
                     };
+
                     var textBox = new TextBox { Width = 100 };
                     textBox.TextChanged += TextBox_TextChanged;
+
                     flowLayoutPanelInputs.Controls.Add(label);
                     flowLayoutPanelInputs.Controls.Add(textBox);
                 }
