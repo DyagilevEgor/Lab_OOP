@@ -156,8 +156,8 @@ namespace View
                 }
 
                 _figure = config.create(values);
-                //TODO: duplication
-                labelResult.Text = $"Площадь: {_figure.Area:F2}";
+                //TODO: duplication+
+                labelResult.Text = $"Площадь: {_figure.Area.ToString(FormatConstants.AreaFormat)}";
                 buttonAdd.Enabled = true;
             }
             catch (Exception ex)
@@ -167,7 +167,7 @@ namespace View
                 _figure = null;
             }
         }
-
+  
         /// <summary>
         /// Обработка кнопки "Добавить"
         /// </summary>

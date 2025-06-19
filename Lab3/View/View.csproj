@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FigureEventArgs.cs" />
+    <Compile Include="FormatConstants.cs" />
     <Compile Include="SearchFigureForm.cs">
       <SubType>Form</SubType>
     </Compile>

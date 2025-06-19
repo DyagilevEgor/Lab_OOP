@@ -12,6 +12,9 @@ namespace View
     /// </summary>
     public partial class MainForm : Form
     {
+        
+        public const string AreaFormat = "F2";
+
         /// <summary>
         /// Основной список всех фигур
         /// </summary>
@@ -241,8 +244,8 @@ namespace View
                 DataPropertyName = "Area",
                 HeaderText = "Площадь",
                 ReadOnly = true,
-                //TODO: duplication
-                DefaultCellStyle = { Format = "F2" }
+                //TODO: duplication+
+                DefaultCellStyle = { Format = FormatConstants.AreaFormat }
             };
             DataFigureView.Columns.Add(areaColumn);
         }
