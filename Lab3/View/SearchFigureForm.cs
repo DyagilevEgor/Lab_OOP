@@ -1,5 +1,6 @@
 ﻿using Model;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -10,11 +11,16 @@ namespace View
     /// </summary>
     public partial class SearchFigureForm : Form
     {
-        //TODO: optimize
+        //TODO: optimize+
         /// <summary>
         /// Ивент для передачи данных 
         /// </summary>
-        public event EventHandler<FigureEventArgs> SendDataFromFormEvent;
+        //public event EventHandler<FigureEventArgs> SendDataFromFormEvent;
+
+        /// <summary>
+        /// Событие для передачи найденных фигур в виде списка
+        /// </summary>
+        public event EventHandler<FiguresFoundEventArgs> SendFigureListEvent;
 
         /// <summary>
         /// Лист фильтрованных фигур
@@ -62,12 +68,11 @@ namespace View
         /// <param name="e"></param>
         private void ButtonShowFigure_Click(object sender, EventArgs e)
         {
-            int count = 0;
+            var resultList = new List<FigureBase>();
 
             bool typeFilterEnabled = CheckBoxRectangle.Checked
                                      || CheckBoxTriangle.Checked
                                      || CheckBoxCircle.Checked;
-
             bool areaFilterEnabled = CheckBoxVolume.Checked;
 
             if (!typeFilterEnabled && !areaFilterEnabled)
@@ -78,13 +83,11 @@ namespace View
 
             double searchedArea = 0;
 
-            if (areaFilterEnabled)
+            if (areaFilterEnabled &&
+                !double.TryParse(TextBoxVolume.Text.Replace('.', ','), out searchedArea))
             {
-                if (!double.TryParse(TextBoxVolume.Text.Replace('.', ','), out searchedArea))
-                {
-                    MessageBox.Show("Введите корректное числовое значение площади.");
-                    return;
-                }
+                MessageBox.Show("Введите корректное числовое значение площади.");
+                return;
             }
 
             foreach (FigureBase figure in _listFigureSearch)
@@ -99,15 +102,18 @@ namespace View
 
                 if (typeMatch && areaMatch)
                 {
-                    count++;
-                    SendDataFromFormEvent?.Invoke(this, new FigureEventArgs(figure));
+                    resultList.Add(figure);
                 }
             }
 
-            if (count == 0)
+            if (resultList.Count == 0)
             {
                 MessageBox.Show("Таких фигур нет или вы ввели некорректное значение.\nБудьте внимательны",
                                 "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                SendFigureListEvent?.Invoke(this, new FiguresFoundEventArgs(resultList));
             }
 
             Close();

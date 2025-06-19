@@ -12,9 +12,6 @@ namespace View
     /// </summary>
     public partial class MainForm : Form
     {
-        
-        public const string AreaFormat = "F2";
-
         /// <summary>
         /// Основной список всех фигур
         /// </summary>
@@ -186,7 +183,7 @@ namespace View
         private void SearchFigureButton_Click(object sender, EventArgs e)
         {
             var searchForm = new SearchFigureForm(_figureList);
-            searchForm.SendDataFromFormEvent += AddSearchFigureEvent;
+            searchForm.SendFigureListEvent += AddSearchFigureListEvent;
             searchForm.Show();
         }
 
@@ -249,5 +246,28 @@ namespace View
             };
             DataFigureView.Columns.Add(areaColumn);
         }
+
+        /// <summary>
+        /// Добавление найденных фигур из формы поиска
+        /// </summary>
+        private void AddSearchFigureListEvent(object sender, FiguresFoundEventArgs e)
+        {
+            _listForSearch.Clear();
+            foreach (var figure in e.Figures)
+            {
+                _listForSearch.Add(figure);
+            }
+
+            DataFigureView.DataSource = _listForSearch;
+
+            DeleteFugureButton.Enabled = false;
+            DropFilterButton.Enabled = true;
+            SearchFigureButton.Enabled = false;
+            AddFigureButton.Enabled = false;
+#if DEBUG
+            RandomFigureButton.Enabled = false;
+#endif
+        }
+
     }
 }
