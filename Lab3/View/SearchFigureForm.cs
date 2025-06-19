@@ -40,18 +40,6 @@ namespace View
         }
 
         /// <summary>
-        /// Обработка чисел на форме
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NumericTextboxKeyPress(object sender,
-            KeyPressEventArgs e)
-        {
-            if (double.TryParse(((TextBox)sender).Text + e.KeyChar, out _)
-                || e.KeyChar == (char)Keys.Back) return;
-        }
-
-        /// <summary>
         /// Обработчик изменения свойства Check объекта VolumeCheckBox
         /// </summary>
         /// <param name="sender"></param>
