@@ -64,17 +64,19 @@ namespace View
         {
             int count = 0;
 
-            if (!CheckBoxRectangle.Checked 
-                && !CheckBoxTriangle.Checked 
-                && !CheckBoxCircle.Checked 
-                && !CheckBoxVolume.Checked)
+            bool typeFilterEnabled = CheckBoxRectangle.Checked
+                                     || CheckBoxTriangle.Checked
+                                     || CheckBoxCircle.Checked;
+
+            bool areaFilterEnabled = CheckBoxVolume.Checked;
+
+            if (!typeFilterEnabled && !areaFilterEnabled)
             {
                 MessageBox.Show("Вы не ввели критерии для поиска");
                 return;
             }
 
             double searchedArea = 0;
-            bool areaFilterEnabled = CheckBoxVolume.Checked;
 
             if (areaFilterEnabled)
             {
@@ -87,32 +89,13 @@ namespace View
 
             foreach (FigureBase figure in _listFigureSearch)
             {
-                bool typeMatch = true;
+                bool typeMatch = !typeFilterEnabled ||
+                                 (figure is Model.Rectangle && CheckBoxRectangle.Checked) ||
+                                 (figure is Triangle && CheckBoxTriangle.Checked) ||
+                                 (figure is Circle && CheckBoxCircle.Checked);
 
-                if (CheckBoxRectangle.Checked || CheckBoxTriangle.Checked || CheckBoxCircle.Checked)
-                {
-                    typeMatch = false;
-
-                    if (figure is Model.Rectangle && CheckBoxRectangle.Checked)
-                    {
-                        typeMatch = true;
-                    }
-                    else if (figure is Triangle && CheckBoxTriangle.Checked)
-                    {
-                        typeMatch = true;
-                    }
-                    else if (figure is Circle && CheckBoxCircle.Checked)
-                    {
-                        typeMatch = true;
-                    }
-                }
-
-                bool areaMatch = true;
-
-                if (areaFilterEnabled)
-                {
-                    areaMatch = Math.Abs(Math.Round(figure.Area, 2) - Math.Round(searchedArea, 2)) < 0.001;
-                }
+                bool areaMatch = !areaFilterEnabled ||
+                                 Math.Abs(Math.Round(figure.Area, 2) - Math.Round(searchedArea, 2)) < 0.001;
 
                 if (typeMatch && areaMatch)
                 {
