@@ -43,16 +43,22 @@ namespace View
 
             _figureMap = new Dictionary<string, (string[], Func<List<double>, FigureBase>)>
             {
-                //TODO: formatting
-                ["Треугольник"] = (new[] { "Сторона A", "Сторона B", "Сторона C" },
-                values => new Triangle(values[0], values[1], values[2])
-    ),
-                ["Прямоугольник"] = (new[] { "Ширина", "Высота" },
-                values => new Model.Rectangle(values[0], values[1])
-    ),
-                ["Круг"] = (new[] { "Радиус" },
-                values => new Circle(values[0])
-    )
+                //TODO: formatting+
+                ["Треугольник"] = 
+                (
+                    new[] { "Сторона A", "Сторона B", "Сторона C" },
+                    values => new Triangle(values[0], values[1], values[2])
+                ),
+                ["Прямоугольник"] = 
+                (
+                    new[] { "Ширина", "Высота" },
+                    values => new Model.Rectangle(values[0], values[1])
+                ),
+                ["Круг"] = 
+                (
+                    new[] { "Радиус" },
+                    values => new Circle(values[0])
+                )
             };
 
             comboBoxFigure.Items.AddRange(_figureMap.Keys.ToArray());

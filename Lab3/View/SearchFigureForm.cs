@@ -63,12 +63,9 @@ namespace View
                 return;
             }
 
-            double searchedArea = 0;
-
-            if (areaFilterEnabled &&
-                !double.TryParse(TextBoxVolume.Text.Replace('.', ','), out searchedArea))
+            if (areaFilterEnabled && string.IsNullOrWhiteSpace(TextBoxVolume.Text))
             {
-                MessageBox.Show("Введите корректное числовое значение площади.");
+                MessageBox.Show("Введите значение для поиска площади.");
                 return;
             }
 
@@ -80,7 +77,7 @@ namespace View
                                  (figure is Circle && CheckBoxCircle.Checked);
 
                 bool areaMatch = !areaFilterEnabled ||
-                                 Math.Abs(Math.Round(figure.Area, 2) - Math.Round(searchedArea, 2)) < 0.001;
+                                 figure.Area.ToString(FormatConstants.AreaFormat).Contains(TextBoxVolume.Text.Trim());
 
                 if (typeMatch && areaMatch)
                 {

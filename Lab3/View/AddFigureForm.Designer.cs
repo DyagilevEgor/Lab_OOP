@@ -71,7 +71,7 @@
             // 
             this.flowLayoutPanelInputs.Location = new System.Drawing.Point(166, 27);
             this.flowLayoutPanelInputs.Name = "flowLayoutPanelInputs";
-            this.flowLayoutPanelInputs.Size = new System.Drawing.Size(196, 84);
+            this.flowLayoutPanelInputs.Size = new System.Drawing.Size(208, 84);
             this.flowLayoutPanelInputs.TabIndex = 6;
             // 
             // errorProvider
@@ -91,7 +91,7 @@
             // 
             this.groupBox2.Location = new System.Drawing.Point(161, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(226, 113);
+            this.groupBox2.Size = new System.Drawing.Size(228, 113);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Введите параметры фигуры";

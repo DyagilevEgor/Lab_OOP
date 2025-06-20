@@ -188,23 +188,6 @@ namespace View
         }
 
         /// <summary>
-        /// Добавление найденной фигуры из формы поиска
-        /// </summary>
-        public void AddSearchFigureEvent(object sender, FigureEventArgs e)
-        {
-            _listForSearch.Add(e.SendingFigure);
-            DataFigureView.DataSource = _listForSearch;
-
-            DeleteFugureButton.Enabled = false;
-            DropFilterButton.Enabled = true;
-            SearchFigureButton.Enabled = false;
-            AddFigureButton.Enabled = false;
-#if DEBUG
-            RandomFigureButton.Enabled = false;
-#endif
-        }
-
-        /// <summary>
         /// Сброс фильтра и возврат ко всему списку фигур
         /// </summary>
         private void DropFilterButton_Click(object sender, EventArgs e)

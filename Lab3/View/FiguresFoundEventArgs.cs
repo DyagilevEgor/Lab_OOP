@@ -17,7 +17,11 @@ namespace View
         /// </summary>
         public List<FigureBase> Figures { get; }
 
-        //TODO: XML
+        //TODO: XML+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="FiguresFoundEventArgs"/>.
+        /// </summary>
+        /// <param name="figures">Список найденных фигур
         public FiguresFoundEventArgs(List<FigureBase> figures)
         {
             Figures = figures ?? new List<FigureBase>();
