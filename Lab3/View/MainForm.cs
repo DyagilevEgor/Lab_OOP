@@ -128,6 +128,14 @@ namespace View
 
                     SetupDataGridColumns();
 
+                    DeleteFugureButton.Enabled = true;
+                    DropFilterButton.Enabled = false;
+                    SearchFigureButton.Enabled = true;
+                    AddFigureButton.Enabled = true;
+#if DEBUG
+                    RandomFigureButton.Enabled = true;
+#endif
+
                     MessageBox.Show("Файл успешно загружен.", "Загрузка завершена",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
