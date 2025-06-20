@@ -124,7 +124,10 @@ namespace View
                         _figureList.Add(figure);
                     }
 
+                    DataFigureView.DataSource = _figureList;
+
                     SetupDataGridColumns();
+
                     MessageBox.Show("Файл успешно загружен.", "Загрузка завершена",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
