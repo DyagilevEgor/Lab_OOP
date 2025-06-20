@@ -135,7 +135,6 @@ namespace View
 #if DEBUG
                     RandomFigureButton.Enabled = true;
 #endif
-
                     MessageBox.Show("Файл успешно загружен.", "Загрузка завершена",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
