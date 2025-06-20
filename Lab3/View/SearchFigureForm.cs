@@ -11,12 +11,6 @@ namespace View
     /// </summary>
     public partial class SearchFigureForm : Form
     {
-        //TODO: optimize+
-        /// <summary>
-        /// Ивент для передачи данных 
-        /// </summary>
-        //public event EventHandler<FigureEventArgs> SendDataFromFormEvent;
-
         /// <summary>
         /// Событие для передачи найденных фигур в виде списка
         /// </summary>

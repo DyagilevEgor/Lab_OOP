@@ -43,6 +43,7 @@ namespace View
 
             _figureMap = new Dictionary<string, (string[], Func<List<double>, FigureBase>)>
             {
+                //TODO: formatting
                 ["Треугольник"] = (new[] { "Сторона A", "Сторона B", "Сторона C" },
                 values => new Triangle(values[0], values[1], values[2])
     ),
@@ -66,7 +67,6 @@ namespace View
             flowLayoutPanelInputs.Controls.Clear();
             buttonAdd.Enabled = false;
             labelResult.Text = string.Empty;
-            //TODO:+
             if (comboBoxFigure.SelectedItem is string figureName &&
                 _figureMap.TryGetValue(figureName, out var config))
             {
@@ -160,7 +160,6 @@ namespace View
                 }
 
                 _figure = config.create(values);
-                //TODO: duplication+
                 labelResult.Text = $"Площадь: {_figure.Area.ToString(FormatConstants.AreaFormat)}";
                 buttonAdd.Enabled = true;
             }

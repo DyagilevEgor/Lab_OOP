@@ -17,6 +17,7 @@ namespace View
         /// </summary>
         public List<FigureBase> Figures { get; }
 
+        //TODO: XML
         public FiguresFoundEventArgs(List<FigureBase> figures)
         {
             Figures = figures ?? new List<FigureBase>();

@@ -23,7 +23,7 @@ namespace View
         /// <param name="sendingFigure">Транспорт</param>
         public FigureEventArgs(FigureBase sendingFigure)
         {
-            //TODO: null?
+            //TODO: RSDN
             if (sendingFigure == null)
                 throw new ArgumentNullException(nameof(sendingFigure), "Фигура не может быть null.");
 

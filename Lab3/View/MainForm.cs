@@ -241,7 +241,6 @@ namespace View
                 DataPropertyName = "Area",
                 HeaderText = "Площадь",
                 ReadOnly = true,
-                //TODO: duplication+
                 DefaultCellStyle = { Format = FormatConstants.AreaFormat }
             };
             DataFigureView.Columns.Add(areaColumn);
