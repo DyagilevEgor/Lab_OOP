@@ -95,7 +95,7 @@ namespace View
                 SendFigureListEvent?.Invoke(this, new FiguresFoundEventArgs(resultList));
             }
 
-            Close();
+            //Close();
 
             CheckBoxRectangle.Checked = false;
             CheckBoxTriangle.Checked = false;
