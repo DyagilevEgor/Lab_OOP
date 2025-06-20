@@ -43,7 +43,6 @@ namespace View
 
             _figureMap = new Dictionary<string, (string[], Func<List<double>, FigureBase>)>
             {
-                //TODO: formatting+
                 ["Треугольник"] = 
                 (
                     new[] { "Сторона A", "Сторона B", "Сторона C" },
