@@ -104,7 +104,7 @@ namespace View
         {
             var openFileDialog = new OpenFileDialog
             {
-                Filter = "Файлы (*.di)|*.di|Все файлы (*.*)|*.*"
+                Filter = "Файлы (*.fig)|*.fig|Все файлы (*.*)|*.*"
             };
 
             if (openFileDialog.ShowDialog() != DialogResult.OK)
@@ -160,9 +160,9 @@ namespace View
 
             var saveFileDialog = new SaveFileDialog
             {
-                Filter = "Файлы (*.di)|*.di|Все файлы (*.*)|*.*",
+                Filter = "Файлы (*.fig)|*.fig|Все файлы (*.*)|*.*",
                 AddExtension = true,
-                DefaultExt = ".di"
+                DefaultExt = ".fig"
             };
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
